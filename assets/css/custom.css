@@ -1,0 +1,839 @@
+/*====================================================================================================
+S C R O L L   B E H A V I O R
+====================================================================================================*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*====================================================================================================
+E F F E T   T Y P E W R I T E R
+====================================================================================================*/
+
+#typewriter-text {
+  display: inline-block;
+  border-right: 2px solid #cbccce;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blinkCursor 0.8s step-end infinite;
+}
+
+@keyframes blinkCursor {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/*====================================================================================================
+S U R V O L   D E   F O R M U L E S
+====================================================================================================*/
+
+/* Icône principale */
+.featured-icon {
+  display: block;
+  text-align: center;
+  margin: 0 0 2em 0;
+  color: #404248;
+  transition: transform 0.5s ease, color 0.5s ease;
+  display: inline-block;
+}
+
+.featured-icon .icon:before {
+  font-size: 5em;
+  line-height: 1em;
+}
+
+/* Blocs de formules */
+.feature1 .row > div > section {
+  position: relative;
+  padding: 2.5em 1em;
+  border-radius: 0.75em;
+  transition: all 0.5s ease;
+  border: 1px solid transparent;
+  transform: translateY(0);
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  color: #444;
+  overflow: hidden; /* pour contenir le ::before */
+}
+
+/* Fond image en fade-in au survol */
+.feature1 .row > div > section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('images/bg01.png'), url('../../images/header.jpg');
+  background-size: auto, cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Activation du fond au hover */
+.feature1 .row > div > section:hover::before {
+  opacity: 1;
+}
+
+/* Contenu par-dessus l'image */
+.feature1 .row > div > section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Effet au survol */
+.feature1 .row > div > section:hover {
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  color: #fff;
+}
+
+/* Icônes animées */
+.featured-icon {
+  display: block;
+  text-align: center;
+  margin: 0 0 2em 0;
+  color: #404248;
+  transition: transform 0.5s ease, color 0.5s ease;
+  display: inline-block;
+}
+
+.featured-icon .icon:before {
+  font-size: 5em;
+  line-height: 1em;
+}
+
+.feature1 .row > div > section:hover .featured-icon {
+  transform: scale(1.2);
+  color: #fff;
+  text-shadow: none;
+}
+
+/* Contenu texte */
+.feature1 .feature-content {
+  text-align: center;
+  transition: color 0.5s ease;
+}
+
+.feature1 .feature-content p {
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1.6;
+  font-size: 1em;
+  margin: 0 auto;
+  max-width: 95%;
+  color: inherit;
+  transition: color 0.5s ease;
+  text-shadow: none;
+}
+
+.feature1 .feature-content h2,
+.feature1 .feature-content h3 {
+  color: inherit;
+  transition: color 0.5s ease;
+  text-shadow: none;
+}
+
+.feature1 .row > div > section:hover {
+  cursor: pointer;
+}
+
+/*====================================================================================================
+S U R V O L   D E   B U D G E T
+====================================================================================================*/
+
+.feature1 header.major p,
+.feature1 .row > div > section p {
+  color: inherit;
+  transition: color 0.5s ease;
+}
+
+.feature1 .row > div > section p {
+  line-height: 1.6;
+  font-size: 1em;
+}
+
+/* Force les <strong> dans les blocs de budget à hériter la couleur (blanc au hover) */
+.feature1 .row > div > section:hover strong {
+  color: #fff;
+  transition: color 0.5s ease;
+}
+
+/*====================================================================================================
+R E S P O N S I V E   D E S   B L O C S   D E   F O R M U L E S   E T   B U D G E T
+====================================================================================================*/
+
+@media screen and (max-width: 980px) {
+  .feature1 .row > div > section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 0.1em solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    padding: 2em 1.5em;
+    margin: 1em 0;
+  }
+}
+
+/*====================================================================================================
+L O G O   P R I N C I P A L
+====================================================================================================*/
+
+/* Titre signature dans la bannière */
+.signature-title {
+  font-family: 'Thesignature', cursive;
+  font-size: 12em;
+  color: #cbccce;
+  text-align: center;
+  line-height: 1.1;
+}
+
+/*====================================================================================================
+H O V E R   D U   L O G O
+====================================================================================================*/
+
+.logo-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition: width 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    left 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#header:hover .logo-hover::after {
+  width: 100%;
+  left: 0%;
+}
+
+.logo-hover {
+  position: relative;
+  text-decoration: none;
+}
+
+/*====================================================================================================
+S O C I A L S   G R O U P
+====================================================================================================*/
+
+.socials-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  position: relative;
+  transition: gap 1s ease;
+  max-width: 200px;
+  margin: auto;
+}
+
+.socials-group:hover {
+  gap: 0.5rem;
+}
+
+/* Icône menu centrale */
+.menu-icon {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease;
+  font-size: 1.75rem;
+  color: #333;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.socials-group:hover .menu-icon {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Carrés d’icônes */
+.social-box {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #333;
+  text-decoration: none;
+  opacity: 0;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+
+  /* Fond neutre par défaut */
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  background-size: auto, cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Apparition au survol du bloc */
+.socials-group:hover .social-box {
+  opacity: 1;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Fond personnalisé au survol individuel */
+.social-box:hover {
+  background-image: url('images/bg01.png'), url('../../images/header.jpg');
+  color: white;
+}
+
+/* Icône avec cadre circulaire */
+.social-box i {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Survol de l’icône */
+.social-box:hover i {
+  color: white;
+  border-color: white;
+}
+
+/* Coins arrondis */
+.tl {
+  border-top-left-radius: 0.75rem;
+}
+.tr {
+  border-top-right-radius: 0.75rem;
+}
+.bl {
+  border-bottom-left-radius: 0.75rem;
+}
+.br {
+  border-bottom-right-radius: 0.75rem;
+}
+
+/*====================================================================================================
+D E S C R I P T I O N   D E   L E   M E N U
+====================================================================================================*/
+
+#socials-description {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 13pt !important;
+  color: #404248;
+  min-height: 1.5em; /* Réserve l’espace */
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin: 0 0 1em 0;
+  outline: 0;
+}
+#socials-description.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*====================================================================================================
+S T Y L E S   F O R M U L E S   E N   C A R T E
+====================================================================================================*/
+
+.card-formule {
+  background: #fff;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
+  padding: 2em;
+  border-radius: 12px;
+  margin: 2em 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  border: 1px solid #40424813;
+}
+
+.card-formule h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75em;
+  font-size: 1.5em;
+  text-align: center;
+  margin: 0;
+}
+
+.card-formule h3 i {
+  font-size: 1.3em;
+  color: #0077cc;
+}
+
+.card-formule > p:first-of-type {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.card-formule table {
+  width: 100%;
+  margin: 1em 0;
+}
+
+.card-formule table th,
+.card-formule table td {
+  text-align: left;
+}
+
+.card-formule p strong,
+.card-formule blockquote {
+  text-align: left;
+  display: block;
+}
+
+.card-formule blockquote {
+  font-style: italic;
+  opacity: 0.9;
+  margin-top: 0.5em;
+}
+
+.card-formule .button {
+  display: inline-block;
+  margin: 1em auto 0 auto;
+}
+
+.card-formule p:last-of-type {
+  text-align: center;
+}
+
+/*====================================================================================================
+T A B L E A U   C O M P A R A T I F   G L O B A L
+====================================================================================================*/
+
+.comparatif-global {
+  margin-top: 4em;
+}
+
+.comparatif-global table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.comparatif-global th,
+.comparatif-global td {
+  border: 1px solid #ccc;
+  padding: 0.8em;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.comparatif-global tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.comparatif-global th {
+  background-color: #0077cc;
+  color: white;
+}
+
+.comparatif-global table th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.comparatif-global table th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.comparatif-global table tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+
+.comparatif-global table tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+/*====================================================================================================
+B A D G E S   T A B L E A U   ✅ ❌ ➕
+====================================================================================================*/
+
+.badge {
+  background: #e0e0e0;
+  border-radius: 0.5em;
+  padding: 0.2em 0.6em;
+  font-size: 0.9em;
+  display: inline-block;
+}
+.badge.ok {
+  background: #d4edda;
+  color: #155724;
+}
+.badge.nok {
+  background: #f8d7da;
+  color: #721c24;
+}
+.badge.opt {
+  background: #fff3cd;
+  color: #856404;
+}
+
+/*====================================================================================================
+A O S   A N I M A T I O N S
+====================================================================================================*/
+
+[data-aos] {
+  opacity: 0;
+  transition-property: transform, opacity;
+}
+[data-aos].aos-animate {
+  opacity: 1;
+}
+
+.motif1 {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/*====================================================================================================
+M O T I F S   D E   F O N D
+====================================================================================================*/
+
+.motif1::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.03; /* Opacité générale du motif */
+  --s: 100px;
+  --c1: #ffffff;
+  --c2: #444444;
+
+  --_g: var(--c2) 4% 14%, var(--c1) 14% 24%, var(--c2) 22% 34%,
+    var(--c1) 34% 44%, var(--c2) 44% 56%, var(--c1) 56% 66%, var(--c2) 66% 76%,
+    var(--c1) 76% 86%, var(--c2) 86% 96%;
+
+  background: radial-gradient(
+      100% 100% at 100% 0,
+      var(--c1) 4%,
+      var(--_g),
+      rgba(0, 0, 0, 0.5) 96%,
+      transparent
+    ),
+    radial-gradient(
+        100% 100% at 0 100%,
+        transparent,
+        rgba(0, 0, 0, 0.5) 4%,
+        var(--_g),
+        var(--c1) 96%
+      )
+      var(--c1);
+
+  background-size: var(--s) var(--s);
+
+  /* Estompage progressif sur tous les côtés */
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 60%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: cover;
+}
+
+.motif2 {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.motif2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.05; /* opacité du motif */
+  --s: 194px;
+  --c1: #ffffff;
+  --c2: #888888;
+
+  --_l: transparent calc(25% / 3), var(--c1) 0 25%, transparent 0;
+  --_g: conic-gradient(
+    from 120deg at 50% 87.5%,
+    var(--c1) 120deg,
+    transparent 0
+  );
+
+  background: var(--_g), var(--_g) 0 calc(var(--s) / 2),
+    conic-gradient(from 180deg at 75%, var(--c2) 60deg, transparent 0),
+    conic-gradient(from 60deg at 75% 75%, var(--c1) 0 60deg, transparent 0),
+    linear-gradient(150deg, var(--_l)) 0 calc(var(--s) / 2),
+    conic-gradient(
+      at 25% 25%,
+      transparent 50%,
+      var(--c2) 0 240deg,
+      var(--c1) 0 300deg,
+      var(--c2) 0
+    ),
+    linear-gradient(-150deg, var(--_l)) #444444;
+  background-size: calc(0.866 * var(--s)) var(--s);
+
+  /* Effet d'estompage vers les bords */
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 60%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: cover;
+}
+
+.motif3 {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.motif3::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.03; /* Opacité DU FOND uniquement */
+  background-color: #e5e5f7;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #e5e5f7 14px
+    ),
+    repeating-linear-gradient(#00000055, #000000);
+
+  /* Estompage progressif vers les bords */
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 60%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: cover;
+}
+
+.motif4::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.05;
+
+  /* Variables personnalisées */
+  --color-1: #ffffff; /* Couleur claire */
+  --color-2: #888888; /* Couleur foncée */
+  --bg-color: #ffffff; /* Couleur de fond */
+  --spacing: 64px;
+
+  background: radial-gradient(
+      50% 50% at 100% 0,
+      var(--color-1) 0% 5%,
+      var(--color-2) 6% 15%,
+      var(--color-1) 16% 25%,
+      var(--color-2) 26% 35%,
+      var(--color-1) 36% 45%,
+      var(--color-2) 46% 55%,
+      var(--color-1) 56% 65%,
+      var(--color-2) 66% 75%,
+      var(--color-1) 76% 85%,
+      var(--color-2) 86% 95%,
+      transparent 96%
+    ),
+    radial-gradient(
+      50% 50% at 0 100%,
+      var(--color-1) 0% 5%,
+      var(--color-2) 6% 15%,
+      var(--color-1) 16% 25%,
+      var(--color-2) 26% 35%,
+      var(--color-1) 36% 45%,
+      var(--color-2) 46% 55%,
+      var(--color-1) 56% 65%,
+      var(--color-2) 66% 75%,
+      var(--color-1) 76% 85%,
+      var(--color-2) 86% 95%,
+      transparent 96%
+    ),
+    radial-gradient(
+      50% 50%,
+      var(--color-1) 0% 5%,
+      var(--color-2) 6% 15%,
+      var(--color-1) 16% 25%,
+      var(--color-2) 26% 35%,
+      var(--color-1) 36% 45%,
+      var(--color-2) 46% 55%,
+      var(--color-1) 56% 65%,
+      var(--color-2) 66% 75%,
+      var(--color-1) 76% 85%,
+      var(--color-2) 86% 95%,
+      transparent 96%
+    ),
+    radial-gradient(
+        50% 50%,
+        var(--color-1) 0% 5%,
+        var(--color-2) 6% 15%,
+        var(--color-1) 16% 25%,
+        var(--color-2) 26% 35%,
+        var(--color-1) 36% 45%,
+        var(--color-2) 46% 55%,
+        var(--color-1) 56% 65%,
+        var(--color-2) 66% 75%,
+        var(--color-1) 76% 85%,
+        var(--color-2) 86% 95%,
+        transparent 96%
+      )
+      32px 32px;
+
+  background-size: var(--spacing) var(--spacing);
+  background-color: var(--bg-color);
+
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 60%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: cover;
+}
+
+/*====================================================================================================
+L O G O   M O R I A R T Y
+====================================================================================================*/
+
+#logo-container {
+  width: 25em;
+  margin: 0 auto 2em auto;
+  padding: 1em;
+}
+
+#logo-container svg {
+  width: 100%;
+  height: auto;
+  transition: transform 0.4s ease;
+  filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.5));
+}
+
+#logo-container:hover svg {
+  transform: scale(1.1) rotate(2deg);
+}
+
+#logo-container path {
+  fill: #cbccce;
+  transition: fill 0.3s ease;
+}
+
+#logo-container path {
+  stroke: #cbccce;
+  stroke-width: 0.5;
+  fill: none;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: draw-logo 60s ease-out forwards;
+}
+
+@keyframes draw-logo {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+#logo-container path.filled {
+  animation: fill-in 1.5s ease-out forwards;
+}
+
+@keyframes fill-in {
+  0% {
+    fill: transparent;
+    opacity: 0;
+  }
+  100% {
+    fill: #cbccce;
+    opacity: 1;
+  }
+}
+
+@media (min-width: 980px) {
+  #logo-container {
+    width: 35em;
+  }
+
+  #logo-container path {
+    stroke-width: 0.2;
+  }
+}
+
+/*====================================================================================================
+S E C T I O N   S E P A R A T O R
+====================================================================================================*/
+
+.section-separator {
+  width: 100%;
+  height: 20px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 9px,
+    rgba(0, 0, 0, 0.1) 9px,
+    rgba(0, 0, 0, 0.1) 11px,
+    transparent 11px,
+    transparent 20px
+  );
+}
+
+/*====================================================================================================
+F O O T E R
+====================================================================================================*/
+
+/* ====== Checkbox RGPD ====== */
+
+.rgpd-wrapper {
+  margin-top: 1em;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+.rgpd-wrapper input[type='checkbox'] {
+  all: unset; /* retire tous les styles perturbateurs */
+  appearance: auto; /* réactive le rendu natif de la checkbox */
+  accent-color: #0077cc;
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.5em;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.rgpd-wrapper label {
+  display: flex;
+  align-items: center;
+  line-height: 1.4;
+  cursor: pointer;
+}
