@@ -1,27 +1,193 @@
 <!DOCTYPE html>
-<!--
-	ZeroFour by Pixelarity (custom version for Moriarty)
--->
-<html>
+<html lang="fr">
   <head>
-    <title>Moriarty - Création de sites web</title>
+    <!-- Meta tags de base -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
+
+    <!-- SEO Meta tags -->
+    <title>
+      Moriarty - Création de Sites Web Professionnels | Développeur Web
+      Freelance
+    </title>
+    <meta
+      name="description"
+      content="Création de sites web professionnels sur-mesure pour particuliers, entrepreneurs et artisans. Sites vitrine, e-commerce, applications web. Prix abordables, résultats professionnels."
+    />
+    <meta
+      name="keywords"
+      content="création site web, développeur web freelance, site vitrine, e-commerce, application web, web design, référencement SEO, hébergement web, nom de domaine"
+    />
+    <meta name="author" content="Moriarty - Développeur Web Freelance" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="French" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://moriarty.fr/" />
+
+    <!-- Google Site Verification -->
     <meta
       name="google-site-verification"
       content="Xw-8Qd33KtH9ZHkhSjMIkw5Qh_IthEsU0mbhwjx3zjk"
     />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://moriarty.fr/" />
+    <meta
+      property="og:title"
+      content="Moriarty - Création de Sites Web Professionnels | Développeur Web Freelance"
+    />
+    <meta
+      property="og:description"
+      content="Création de sites web professionnels sur-mesure pour particuliers, entrepreneurs et artisans. Sites vitrine, e-commerce, applications web. Prix abordables, résultats professionnels."
+    />
+    <meta
+      property="og:image"
+      content="https://moriarty.fr/images/og-image.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Moriarty" />
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://moriarty.fr/" />
+    <meta
+      property="twitter:title"
+      content="Moriarty - Création de Sites Web Professionnels"
+    />
+    <meta
+      property="twitter:description"
+      content="Création de sites web professionnels sur-mesure pour particuliers, entrepreneurs et artisans. Prix abordables, résultats professionnels."
+    />
+    <meta
+      property="twitter:image"
+      content="https://moriarty.fr/images/twitter-card.jpg"
+    />
+
+    <!-- Favicon et icônes -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <!-- Preconnect pour les ressources externes -->
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <!-- Preload polices web -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.cdnfonts.com/css/engagement"
+    />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,800"
+    />
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/custom.css" />
-    <link href="https://fonts.cdnfonts.com/css/engagement" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link href="https://fonts.cdnfonts.com/css/engagement" rel="stylesheet" />
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Moriarty",
+        "description": "Création de sites web professionnels sur-mesure pour particuliers, entrepreneurs et artisans",
+        "url": "https://moriarty.fr",
+        "logo": "https://moriarty.fr/images/moriarty-logo.svg",
+        "image": "https://moriarty.fr/images/header-json.jpg",
+        "telephone": "+33-7-70-34-43-32",
+        "email": "contact@moriarty-design.fr",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "FR",
+          "addressLocality": "Douai",
+          "addressRegion": "Nord-Pas-de-Calais",
+          "postalCode": "59500"
+        },
+        "openingHours": "Mo-Sa 09:00-20:00",
+        "priceRange": "€€",
+        "serviceType": [
+          "Création de sites web",
+          "Développement web",
+          "Design web",
+          "E-commerce",
+          "Applications web"
+        ],
+        "areaServed": "France",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Services Web",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Site Vitrine",
+                "description": "Site web simple et élégant pour présenter votre activité"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Site Évolutif",
+                "description": "Site web paramétrable pour personnaliser, modifier, ajouter ou supprimer votre contenu"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Site E-commerce",
+                "description": "Boutique en ligne avec gestion des commandes et paiements"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Application Web",
+                "description": "Application web complète pour piloter votre activité"
+              }
+            }
+          ]
+        }
+      }
+    </script>
   </head>
 
   <body class="homepage is-preload">
@@ -32,79 +198,74 @@
           <header id="header">
             <div class="inner">
               <h1>
-                <a href="index.html" id="logo" class="logo-hover">Moriarty</a>
+                <a
+                  href="index.html"
+                  id="logo"
+                  class="logo-hover"
+                  aria-label="Moriarty - Accueil"
+                  >Moriarty</a
+                >
               </h1>
-              <nav id="nav">
+              <nav id="nav" role="navigation" aria-label="Menu principal">
                 <ul>
                   <li class="current_page_item">
-                    <a href="index.html">Accueil</a>
+                    <a href="index.html" aria-current="page">Accueil</a>
                   </li>
                   <li>
-                    <a href="#">Navigation</a>
+                    <a href="#" aria-haspopup="true">Navigation</a>
                     <ul>
                       <!-- Les formules -->
                       <li>
-                        <a href="formules.html">Les formules</a>
+                        <a href="#">Les formules</a>
                         <ul>
                           <!-- Web -->
                           <li>
-                            <a href="#">Web</a>
+                            <a href="formules.html">Web</a>
                             <ul>
                               <li>
                                 <a
                                   href="formules.html#vitrine"
                                   class="icon solid fa-store"
-                                >
-                                  Vitrine</a
+                                  >Vitrine</a
                                 >
                               </li>
                               <li>
                                 <a
                                   href="formules.html#evolutif"
                                   class="icon solid fa-cogs"
-                                >
-                                  Evolutif</a
+                                  >Evolutif</a
                                 >
                               </li>
                               <li>
                                 <a
                                   href="formules.html#ecommerce"
                                   class="icon solid fa-shopping-cart"
-                                >
-                                  E-commerce</a
+                                  >E-commerce</a
                                 >
                               </li>
                               <li>
                                 <a
                                   href="formules.html#webapp"
                                   class="icon solid fa-laptop-code"
-                                >
-                                  Web application</a
+                                  >Web application</a
                                 >
                               </li>
                               <li>
                                 <a
                                   href="formules.html#comparatif"
                                   class="icon solid fa-table-list"
-                                >
-                                  Comparatif</a
+                                  >Comparatif</a
                                 >
                               </li>
                             </ul>
                           </li>
                           <!-- Bureau -->
                           <li>
-                            <a href="#">Bureau</a>
+                            <a href="bureautique.html">Bureau</a>
                             <ul>
-                              <li>
-                                <a href="#">Logiciels sur mesure</a>
-                              </li>
-                              <li>
-                                <a href="#">Automatisations</a>
-                              </li>
-                              <li>
-                                <a href="#">Solutions Excel / VBA</a>
-                              </li>
+                              <li><a href="#">Logiciels sur mesure</a></li>
+                              <li><a href="#">Automatisations</a></li>
+                              <li><a href="#">Solutions Excel / VBA</a></li>
                             </ul>
                           </li>
                         </ul>
@@ -114,13 +275,17 @@
                         <a href="budget.html">La maîtrise de votre budget</a>
                         <ul>
                           <li>
-                            <a href="#" class="icon solid fa-piggy-bank">
-                              Sites à coût zéro</a
+                            <a
+                              href="budget.html#sites-a-cout-zero"
+                              class="icon solid fa-piggy-bank"
+                              >Sites à coût zéro</a
                             >
                           </li>
                           <li>
-                            <a href="#" class="icon solid fa-balance-scale">
-                              Paiement à l’usage</a
+                            <a
+                              href="budget.html#paiement-a-usage"
+                              class="icon solid fa-balance-scale"
+                              >Paiement à l’usage</a
                             >
                           </li>
                         </ul>
@@ -131,8 +296,8 @@
               </nav>
             </div>
           </header>
-
           <div id="banner">
+            <!-- Logo Moriarty -->
             <div id="logo-container"></div>
             <h2>
               <strong
@@ -146,9 +311,12 @@
               créateurs ...
             </h2>
             <p style="text-align: center">
-              Solution sur-mesure. <br />Prix doux, résultat pro.
+              Un site qui impressionne. <br />Un budget qui rassure.
             </p>
-            <a href="#contact" class="button large icon solid fa-envelope"
+            <a
+              href="#contact"
+              class="button large icon solid fa-envelope"
+              aria-label="Aller au formulaire de contact"
               >Contact</a
             >
           </div>
@@ -156,7 +324,7 @@
       </div>
 
       <!-- Main Wrapper -->
-      <div id="main-wrapper">
+      <main id="main-wrapper" role="main">
         <!-- L E   S O C L E   M O R I A R T Y -->
         <div class="wrapper style2 motif1">
           <div class="inner">
@@ -164,7 +332,7 @@
               <div class="row">
                 <div class="col-12">
                   <header class="first major">
-                    <h2 class="site-banner-title">
+                    <h2 id="socle-title" class="site-banner-title">
                       <span>Le socle Moriarty</span>
                     </h2>
                     <p style="text-align: center">
@@ -174,7 +342,12 @@
                     </p>
                   </header>
 
-                  <div class="socials-group">
+                  <div
+                    class="socials-group"
+                    role="region"
+                    aria-label="Services inclus dans le socle Moriarty"
+                  >
+                    <!-- Socle Moriarty : cadeau centre -->
                     <h1 class="menu-icon">
                       <i class="fa-solid fa-gift fa-beat"></i>
                     </h1>
@@ -182,51 +355,64 @@
                     <a
                       class="social-box tl"
                       data-desc="Design adapté sur tous les appareils"
+                      aria-label="Design adapté sur tous les appareils"
                       ><i class="fas fa-mobile-alt"></i
                     ></a>
                     <a
                       class="social-box"
                       data-desc="Nom de domaine personnalisé à prix abordable"
+                      aria-label="Nom de domaine personnalisé à prix abordable"
                       ><i class="fas fa-globe"></i
                     ></a>
                     <a
                       class="social-box tr"
                       data-desc="Accompagnement personnalisé du début à la fin"
+                      aria-label="Accompagnement personnalisé du début à la fin"
                       ><i class="fas fa-handshake"></i
                     ></a>
                     <a
                       class="social-box"
                       data-desc="Création d'une boîte mail professionnelle"
+                      aria-label="Création d'une boîte mail professionnelle"
                       ><i class="fas fa-envelope"></i
                     ></a>
                     <a
                       class="social-box"
                       data-desc="Référencement Google / Bing"
+                      aria-label="Référencement Google / Bing"
                       ><i class="fas fa-magnifying-glass"></i
                     ></a>
                     <a
                       class="social-box"
                       data-desc="Formulaire de contact intégré et fonctionnel"
+                      aria-label="Formulaire de contact intégré et fonctionnel"
                       ><i class="fas fa-paper-plane"></i
                     ></a>
                     <a
                       class="social-box bl"
                       data-desc="Textes relus et harmonisés pour une meilleure lisibilité"
+                      aria-label="Textes relus et harmonisés pour une meilleure lisibilité"
                       ><i class="fas fa-pen-nib"></i
                     ></a>
                     <a
                       class="social-box"
                       data-desc="Hébergement gratuit ou ultra-économique"
+                      aria-label="Hébergement gratuit ou ultra-économique"
                       ><i class="fas fa-server"></i
                     ></a>
                     <a
                       class="social-box br"
                       data-desc="Package graphique complet (carte de visite, logo, etc.)"
+                      aria-label="Package graphique complet (carte de visite, logo, etc.)"
                       ><i class="fas fa-palette"></i
                     ></a>
                   </div>
 
-                  <h4 id="socials-description" style="margin-top: 30px"></h4>
+                  <h4
+                    id="socials-description"
+                    style="margin-top: 30px"
+                    aria-live="polite"
+                  ></h4>
                 </div>
               </div>
             </section>
@@ -241,15 +427,16 @@
               <div class="row">
                 <div class="col-12">
                   <header class="first major">
-                    <h2 class="site-banner-title">
+                    <h2 id="formules-title" class="site-banner-title">
                       <span>Les formules clés en main</span>
                     </h2>
                     <p>Choisissez celle qui vous correspond le mieux.</p>
                   </header>
                 </div>
-                <div
-                  class="col-3 col-12-medium"
-                  onclick="window.location.href='formules.html#vitrine'"
+                <!-- Formules -->
+                <a
+                  href="formules.html#vitrine"
+                  class="col-3 col-12-medium formule-link"
                 >
                   <section>
                     <div class="featured-icon">
@@ -263,11 +450,10 @@
                       </p>
                     </div>
                   </section>
-                </div>
-
-                <div
-                  class="col-3 col-12-medium"
-                  onclick="window.location.href='formules.html#evolutif'"
+                </a>
+                <a
+                  href="formules.html#evolutif"
+                  class="col-3 col-12-medium formule-link"
                 >
                   <section>
                     <div class="featured-icon">
@@ -281,11 +467,10 @@
                       </p>
                     </div>
                   </section>
-                </div>
-
-                <div
-                  class="col-3 col-12-medium"
-                  onclick="window.location.href='formules.html#ecommerce'"
+                </a>
+                <a
+                  href="formules.html#ecommerce"
+                  class="col-3 col-12-medium formule-link"
                 >
                   <section>
                     <div class="featured-icon">
@@ -299,11 +484,10 @@
                       </p>
                     </div>
                   </section>
-                </div>
-
-                <div
-                  class="col-3 col-12-medium"
-                  onclick="window.location.href='formules.html#webapp'"
+                </a>
+                <a
+                  href="formules.html#webapp"
+                  class="col-3 col-12-medium formule-link"
                 >
                   <section>
                     <div class="featured-icon">
@@ -317,7 +501,7 @@
                       </p>
                     </div>
                   </section>
-                </div>
+                </a>
 
                 <div class="col-12">
                   <p>
@@ -337,11 +521,15 @@
                   Vous avez besoin d'un outil interne pour mieux gérer vos
                   données, votre production ou vos équipes ?<br />
                   Je conçois également des
-                  <strong>tableaux de bord sur Excel ou VBA</strong>, sur-mesure
-                  et sans passer par le web : gestion de production, suivi
-                  d'équipe, automatisation de tâches, génération de documents...
+                  <strong>tableaux de bord sur Excel ou Windows</strong>,
+                  sur-mesure et sans passer par le web : gestion de production,
+                  suivi d'équipe, automatisation de tâches, génération de
+                  documents...
                 </p>
-                <a href="#" class="button medium icon solid fa-desktop">
+                <a
+                  href="bureautique.html"
+                  class="button medium icon solid fa-desktop"
+                >
                   Découvrez aussi<br />les solutions bureautiques
                 </a>
               </footer>
@@ -355,7 +543,7 @@
             <!-- Feature 2 -->
             <section class="container box feature1">
               <header class="first major">
-                <h2 class="site-banner-title">
+                <h2 id="budget-title" class="site-banner-title">
                   <span>La maitrise de votre budget</span>
                 </h2>
                 <p>
@@ -364,7 +552,11 @@
                 </p>
               </header>
               <div class="row">
-                <div class="col-6 col-12-medium">
+                <!-- Budget -->
+                <a
+                  href="budget.html#sites-a-cout-zero"
+                  class="col-6 col-12-medium budget-link"
+                >
                   <section>
                     <header class="major">
                       <div class="featured-icon">
@@ -385,8 +577,11 @@
                       15 €/an).
                     </p>
                   </section>
-                </div>
-                <div class="col-6 col-12-medium">
+                </a>
+                <a
+                  href="budget.html#paiement-a-usage"
+                  class="col-6 col-12-medium budget-link"
+                >
                   <section>
                     <header class="major">
                       <div class="featured-icon">
@@ -407,12 +602,13 @@
                       maîtrisé en fonction de votre activité.
                     </p>
                   </section>
-                </div>
+                </a>
               </div>
               <footer>
                 <a
                   href="budget.html"
                   class="button medium icon solid fa-info-circle"
+                  aria-label="Découvrir nos solutions de maîtrise du budget"
                   >En savoir plus</a
                 >
               </footer>
@@ -428,21 +624,29 @@
                 <div class="col-8 col-12-medium">
                   <!-- Article list -->
                   <section class="box article-list">
-                    <h2 class="icon fa-file-alt">Réalisations récentes</h2>
+                    <h2 id="realisations-title" class="icon fa-file-alt">
+                      Réalisations récentes
+                    </h2>
 
                     <!-- Excerpt -->
                     <article class="box excerpt">
                       <a
                         href="https://smart-z.fr"
                         target="_blank"
+                        rel="noopener noreferrer"
                         class="image left"
-                        ><img src="images/pic04.jpg" alt=""
+                        ><img
+                          src="images/pic04.jpg"
+                          alt="Site Smart-Z : e-commerce de coques de téléphone personnalisées"
                       /></a>
                       <div>
                         <header>
                           <span class="date">E-commerce</span>
                           <h3>
-                            <a href="https://smart-z.fr" target="_blank"
+                            <a
+                              href="https://smart-z.fr"
+                              target="_blank"
+                              rel="noopener noreferrer"
                               >Smart-Z</a
                             >
                           </h3>
@@ -464,8 +668,11 @@
                       <a
                         href="https://sophied-nailartist.fr/"
                         target="_blank"
+                        rel="noopener noreferrer"
                         class="image left"
-                        ><img src="images/pic05.jpg" alt=""
+                        ><img
+                          src="images/pic05.jpg"
+                          alt="Site SophieD Nail Artist : réservation de prestations de manucure"
                       /></a>
                       <div>
                         <header>
@@ -474,6 +681,7 @@
                             <a
                               href="https://sophied-nailartist.fr/"
                               target="_blank"
+                              rel="noopener noreferrer"
                               >SophieD - Nail Artist</a
                             >
                           </h3>
@@ -495,8 +703,11 @@
                       <a
                         href="https://kevinb59.github.io/calypso-bay/"
                         target="_blank"
+                        rel="noopener noreferrer"
                         class="image left"
-                        ><img src="images/pic06.jpg" alt=""
+                        ><img
+                          src="images/pic06.jpg"
+                          alt="Site Calypso Bay : villa de vacances avec système de réservation"
                       /></a>
                       <div>
                         <header>
@@ -505,6 +716,7 @@
                             <a
                               href="https://kevinb59.github.io/calypso-bay/"
                               target="_blank"
+                              rel="noopener noreferrer"
                               >Calypso Bay</a
                             >
                           </h3>
@@ -523,12 +735,15 @@
                 </div>
                 <div class="col-4 col-12-medium">
                   <!-- Spotlight -->
-                  <section class="box spotlight">
-                    <h2 class="icon fa-file-alt">A propos de moi</h2>
+                  <section class="box spotlight" aria-labelledby="about-title">
+                    <h2 id="about-title" class="icon fa-file-alt">
+                      A propos de moi
+                    </h2>
                     <article>
-                      <a href="#" class="image featured"
-                        ><img src="images/pic07.jpg" alt=""
-                      /></a>
+                      <img
+                        src="images/pic07.png"
+                        alt="Portrait de Mister Moriarty, développeur web freelance"
+                      />
                       <header>
                         <h3>mister moriarty</h3>
                         <p>Autodidacte et passionné</p>
@@ -548,11 +763,6 @@
                         construisons un site qui vous ressemble vraiment, à la
                         fois utile, esthétique et durable.
                       </p>
-                      <footer>
-                        <a href="#" class="button alt icon solid fa-file-alt"
-                          >En savoir plus</a
-                        >
-                      </footer>
                     </article>
                   </section>
                 </div>
@@ -560,40 +770,47 @@
             </div>
           </div>
         </div>
-      </div>
+      </main>
 
       <!-- Footer Wrapper -->
       <div id="footer-wrapper">
-        <footer id="footer" class="container">
+        <footer id="footer" class="container" role="contentinfo">
           <div class="row">
             <!-- Formulaire de contact -->
             <div class="col-6 col-12-medium">
-              <section id="contact">
-                <h2>Contactez-moi</h2>
-                <form
-                  id="contact-form"
-                  method="POST"
-                  action="https://script.google.com/macros/s/TON_SCRIPT_ID/exec"
-                >
+              <section id="contact" aria-labelledby="contact-title">
+                <h2 id="contact-title">Contactez-moi</h2>
+                <form id="contact-form">
                   <div class="row gtr-50">
                     <div class="col-6 col-12-small">
+                      <label for="name" class="sr-only">Nom</label>
                       <input
                         type="text"
+                        id="name"
                         name="name"
                         placeholder="Votre nom"
                         required
+                        aria-required="true"
                       />
                     </div>
                     <div class="col-6 col-12-small">
+                      <label for="email" class="sr-only">Email</label>
                       <input
                         type="email"
+                        id="email"
                         name="email"
                         placeholder="Votre email"
                         required
+                        aria-required="true"
                       />
                     </div>
                     <div class="col-12">
-                      <select name="subject">
+                      <label for="subject" class="sr-only">Objet</label>
+                      <select
+                        id="subject"
+                        name="subject"
+                        aria-label="Objet de votre message"
+                      >
                         <option value="">Objet de votre message</option>
                         <option value="devis">Demande de devis</option>
                         <option value="assistance">Assistance</option>
@@ -602,27 +819,38 @@
                       </select>
                     </div>
                     <div class="col-12">
+                      <label for="message" class="sr-only">Message</label>
                       <textarea
+                        id="message"
                         name="message"
                         placeholder="Votre message"
                         rows="5"
                         required
+                        aria-required="true"
                       ></textarea>
                     </div>
                     <div class="col-12 rgpd-wrapper">
-                      <label>
-                        <input type="checkbox" name="rgpd" required checked />
+                      <label for="rgpd">
+                        <input
+                          type="checkbox"
+                          id="rgpd"
+                          name="rgpd"
+                          required
+                          checked
+                          aria-required="true"
+                        />
                         J'accepte que mes données soient utilisées pour être
                         recontacté.
                       </label>
                     </div>
                     <div class="col-12">
-                      <button type="submit" class="button primary alt">
-                        <i class="fas fa-paper-plane"></i> Envoyer
+                      <button
+                        type="submit"
+                        class="button primary alt"
+                        aria-label="Envoyer le message"
+                      >
+                        <span class="icon solid fa-paper-plane"></span> Envoyer
                       </button>
-                    </div>
-                    <div class="col-12">
-                      <p id="form-status" style="margin-top: 1em"></p>
                     </div>
                   </div>
                 </form>

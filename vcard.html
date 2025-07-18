@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vCard Moriarty</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Engagement&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/vcardStyle.css" />
+  </head>
+  <body>
+    <div class="e-card playing">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="overlay"></div>
+
+      <div class="infotop">
+        <div class="name">Moriarty</div>
+        <div class="job">Votre site web</div>
+        <div class="typewriter-container">
+          <span id="typewriter-text" aria-live="polite"></span>
+        </div>
+        <div class="logo">
+          <img src="images/logo.png" alt="Moriarty" />
+        </div>
+      </div>
+
+      <div class="buttons">
+        <a href="vcard.txt" download="moriarty.vcf" class="contact-button">
+          <i class="fa-solid fa-address-card"></i> Ajouter aux contacts
+        </a>
+
+        <div class="contact-actions">
+          <a href="tel:0770344332" title="Appeler"
+            ><i class="fa-solid fa-phone"></i
+          ></a>
+          <a href="sms:0770344332" title="SMS"
+            ><i class="fa-solid fa-comment"></i
+          ></a>
+          <a href="mailto:contact@moriarty-design.fr" title="Email"
+            ><i class="fa-solid fa-envelope"></i
+          ></a>
+          <a
+            href="https://www.moriarty-design.fr"
+            title="Site web"
+            target="_blank"
+            ><i class="fa-solid fa-globe"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+    <script src="assets/js/typewriter.js"></script>
+  </body>
+</html>

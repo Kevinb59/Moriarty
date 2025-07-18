@@ -1,0 +1,195 @@
+/*====================================================================================================
+V C A R D
+====================================================================================================*/
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.e-card {
+  margin: auto;
+  background: url('../../images/header-vcard.jpg');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.45);
+  position: relative;
+  width: 90vw;
+  max-width: 500px;
+  height: 90vh;
+  max-height: 700px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  width: 740px;
+  height: 900px;
+  opacity: 0.6;
+  left: 0;
+  top: 0;
+  margin-left: -50%;
+  margin-top: -60%;
+  background: linear-gradient(744deg, #0f2b477a, #2a527c7a 60%, #8cc6e880);
+  border-radius: 40%;
+  animation: wave 15s infinite linear;
+}
+
+.wave:nth-child(2),
+.wave:nth-child(3) {
+  top: 210px;
+}
+
+.wave:nth-child(2) {
+  animation-duration: 12s;
+}
+
+.wave:nth-child(3) {
+  animation-duration: 18s;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #ffffff05 8px
+    ),
+    repeating-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+  z-index: 1;
+}
+
+.infotop {
+  text-align: center;
+  font-size: 1.2em;
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  right: 0;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0 1em;
+  z-index: 2;
+}
+
+.name {
+  font-size: 6em;
+  font-family: 'Engagement', cursive;
+  margin-top: 0;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.job {
+  font-size: 1em;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+}
+
+.typewriter-container {
+  font-weight: bold;
+  font-size: 1em;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  font-family: 'Open Sans', sans-serif;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+
+.logo {
+  margin: 30px auto 10px;
+}
+
+.logo img {
+  width: 80%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 2em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  z-index: 2;
+}
+
+.buttons .contact-actions {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+
+.buttons a,
+.buttons button {
+  background: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.6em 1em;
+  font-size: 1em;
+  cursor: pointer;
+  text-decoration: none;
+  color: #133c68;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s;
+  margin-bottom: 1em;
+}
+
+.buttons a:hover,
+.buttons button:hover {
+  background: #e5e5ff;
+}
+
+.icon {
+  display: none;
+}
+
+#typewriter-text::after {
+  content: '|';
+  animation: blink 1s infinite;
+  margin-left: -1px;
+  font-weight: normal;
+  font-size: 1em;
+  opacity: 0.75;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

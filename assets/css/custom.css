@@ -32,19 +32,20 @@ S U R V O L   D E   F O R M U L E S
 .featured-icon {
   display: block;
   text-align: center;
-  margin: 0 0 2em 0;
+  margin: 0 0 0.5em 0; /* Réduit l'espace sous l'icône */
   color: #404248;
   transition: transform 0.5s ease, color 0.5s ease;
   display: inline-block;
 }
 
 .featured-icon .icon:before {
-  font-size: 5em;
+  font-size: 6em; /* Icône plus grande */
   line-height: 1em;
 }
 
-/* Blocs de formules */
-.feature1 .row > div > section {
+/* Blocs de formules (adapté pour <a> au lieu de <div>) */
+.feature1 .row > a.formule-link > section,
+.feature1 .row > a.budget-link > section {
   position: relative;
   padding: 2.5em 1em;
   border-radius: 0.75em;
@@ -55,11 +56,12 @@ S U R V O L   D E   F O R M U L E S
   background-size: cover;
   background-position: center;
   color: #444;
-  overflow: hidden; /* pour contenir le ::before */
+  overflow: hidden;
 }
 
 /* Fond image en fade-in au survol */
-.feature1 .row > div > section::before {
+.feature1 .row > a.formule-link > section::before,
+.feature1 .row > a.budget-link > section::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -73,27 +75,36 @@ S U R V O L   D E   F O R M U L E S
   pointer-events: none;
 }
 
-/* Activation du fond au hover */
-.feature1 .row > div > section:hover::before {
+/* Activation du fond au hover/focus */
+.feature1 .row > a.formule-link:hover > section::before,
+.feature1 .row > a.formule-link:focus-visible > section::before,
+.feature1 .row > a.budget-link:hover > section::before,
+.feature1 .row > a.budget-link:focus-visible > section::before {
   opacity: 1;
 }
 
 /* Contenu par-dessus l'image */
-.feature1 .row > div > section > * {
+.feature1 .row > a.formule-link > section > *,
+.feature1 .row > a.budget-link > section > * {
   position: relative;
   z-index: 1;
 }
 
-/* Effet au survol */
-.feature1 .row > div > section:hover {
+/* Effet au survol/focus */
+.feature1 .row > a.formule-link:hover > section,
+.feature1 .row > a.formule-link:focus-visible > section,
+.feature1 .row > a.budget-link:hover > section,
+.feature1 .row > a.budget-link:focus-visible > section {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.1);
   transform: translateY(-4px);
   color: #fff;
+  cursor: pointer;
 }
 
 /* Icônes animées */
-.featured-icon {
+.feature1 .row > a.formule-link > section .featured-icon,
+.feature1 .row > a.budget-link > section .featured-icon {
   display: block;
   text-align: center;
   margin: 0 0 2em 0;
@@ -102,12 +113,16 @@ S U R V O L   D E   F O R M U L E S
   display: inline-block;
 }
 
-.featured-icon .icon:before {
+.feature1 .row > a.formule-link > section .featured-icon .icon:before,
+.feature1 .row > a.budget-link > section .featured-icon .icon:before {
   font-size: 5em;
   line-height: 1em;
 }
 
-.feature1 .row > div > section:hover .featured-icon {
+.feature1 .row > a.formule-link:hover > section .featured-icon,
+.feature1 .row > a.formule-link:focus-visible > section .featured-icon,
+.feature1 .row > a.budget-link:hover > section .featured-icon,
+.feature1 .row > a.budget-link:focus-visible > section .featured-icon {
   transform: scale(1.2);
   color: #fff;
   text-shadow: none;
@@ -167,8 +182,10 @@ S U R V O L   D E   B U D G E T
 R E S P O N S I V E   D E S   B L O C S   D E   F O R M U L E S   E T   B U D G E T
 ====================================================================================================*/
 
+/* Responsive (max-width: 980px) : garder les effets */
 @media screen and (max-width: 980px) {
-  .feature1 .row > div > section {
+  .feature1 .row > a.formule-link > section,
+  .feature1 .row > a.budget-link > section {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -178,19 +195,28 @@ R E S P O N S I V E   D E S   B L O C S   D E   F O R M U L E S   E T   B U D G 
     padding: 2em 1.5em;
     margin: 1em 0;
   }
-}
-
-/*====================================================================================================
-L O G O   P R I N C I P A L
-====================================================================================================*/
-
-/* Titre signature dans la bannière */
-.signature-title {
-  font-family: 'Thesignature', cursive;
-  font-size: 12em;
-  color: #cbccce;
-  text-align: center;
-  line-height: 1.1;
+  /* Effet hover/focus toujours actif */
+  .feature1 .row > a.formule-link:hover > section,
+  .feature1 .row > a.formule-link:focus-visible > section,
+  .feature1 .row > a.budget-link:hover > section,
+  .feature1 .row > a.budget-link:focus-visible > section {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+    color: #fff;
+    cursor: pointer;
+  }
+  .feature1 .row > a.formule-link > section::before,
+  .feature1 .row > a.budget-link > section::before {
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+  }
+  .feature1 .row > a.formule-link:hover > section::before,
+  .feature1 .row > a.formule-link:focus-visible > section::before,
+  .feature1 .row > a.budget-link:hover > section::before,
+  .feature1 .row > a.budget-link:focus-visible > section::before {
+    opacity: 1;
+  }
 }
 
 /*====================================================================================================
@@ -836,4 +862,247 @@ F O O T E R
   align-items: center;
   line-height: 1.4;
   cursor: pointer;
+}
+
+/*====================================================================================================
+A C C E S S I B I L I T É   E T   S E O
+====================================================================================================*/
+
+/* Labels cachés pour l'accessibilité */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Liens des formules */
+.formule-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.formule-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Liens du budget */
+.budget-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.budget-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Focus visible pour l'accessibilité */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #0077cc;
+  outline-offset: 2px;
+}
+
+/* Amélioration du contraste pour les textes */
+.feature1 .feature-content h3 {
+  color: #404248;
+  font-weight: 700;
+}
+
+.feature1 .feature-content p {
+  color: #666;
+}
+
+/* Titres des formules plus grands */
+.feature1 .feature-content h3 {
+  font-size: 2em;
+  margin: 0 0 1.5em 0;
+  line-height: 1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #404248;
+}
+
+@media screen and (max-width: 736px) {
+  .feature1 .feature-content h3 {
+    font-size: 18pt !important;
+    margin: 0 0 1em 0;
+  }
+}
+
+/* Skip link pour l'accessibilité */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #0077cc;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 10000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Amélioration de la navigation au clavier */
+#nav a:focus,
+.formule-link:focus,
+.budget-link:focus {
+  background-color: rgba(0, 119, 204, 0.1);
+  border-radius: 4px;
+}
+
+/* Indicateurs visuels pour les éléments interactifs */
+.social-box:focus {
+  outline: 2px solid #0077cc;
+  outline-offset: 2px;
+}
+
+/* Amélioration du contraste pour les icônes */
+.featured-icon .icon {
+  color: #404248;
+}
+
+.feature1 .row > div > section:hover .featured-icon .icon {
+  color: #fff;
+}
+
+/* Effet au survol/focus : couleur icône, titre, description en blanc */
+.feature1 .row > a.formule-link:hover > section .featured-icon .icon,
+.feature1 .row > a.formule-link:focus-visible > section .featured-icon .icon,
+.feature1 .row > a.budget-link:hover > section .featured-icon .icon,
+.feature1 .row > a.budget-link:focus-visible > section .featured-icon .icon {
+  color: #fff;
+}
+
+.feature1 .row > a.formule-link:hover > section .feature-content h2,
+.feature1 .row > a.formule-link:focus-visible > section .feature-content h2,
+.feature1 .row > a.formule-link:hover > section .feature-content p,
+.feature1 .row > a.formule-link:focus-visible > section .feature-content p,
+.feature1 .row > a.budget-link:hover > section .feature-content h2,
+.feature1 .row > a.budget-link:focus-visible > section .feature-content h2,
+.feature1 .row > a.budget-link:hover > section .feature-content p,
+.feature1 .row > a.budget-link:focus-visible > section .feature-content p {
+  color: #fff;
+}
+
+/* Budget : texte en gras (strong) en blanc au hover/focus */
+.feature1 .row > a.budget-link:hover > section strong,
+.feature1 .row > a.budget-link:focus-visible > section strong {
+  color: #fff !important;
+}
+
+/* Responsive pour l'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Amélioration de la lisibilité sur mobile */
+@media screen and (max-width: 736px) {
+  .feature1 .feature-content h3 {
+    font-size: 1.2em;
+  }
+
+  .feature1 .feature-content p {
+    font-size: 0.9em;
+    line-height: 1.6;
+  }
+
+  /* Augmentation de la taille des zones de clic */
+  .formule-link,
+  .budget-link {
+    padding: 1em;
+    min-height: 44px;
+  }
+}
+
+/* Amélioration du contraste pour les liens du footer */
+#footer a {
+  color: #acb2bf;
+  text-decoration: underline;
+}
+
+#footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Amélioration de la structure sémantique */
+main {
+  outline: none;
+}
+
+section {
+  outline: none;
+}
+
+/* Optimisation pour les lecteurs d'écran */
+[aria-hidden='true'] {
+  display: none !important;
+}
+
+/* Amélioration de la navigation par tabulation */
+.nav-item:focus-within {
+  background-color: rgba(0, 119, 204, 0.1);
+  border-radius: 4px;
+}
+
+/* Styles pour les éléments avec aria-live */
+[aria-live='polite'] {
+  min-height: 1.2em;
+}
+
+[aria-live='assertive'] {
+  min-height: 1.2em;
+  font-weight: bold;
+}
+
+/* Styles pour les états du bouton de soumission */
+button[type='submit'].disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+button[type='submit']:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Animation de rotation pour l'icône de chargement */
+.fa-spin {
+  animation: fa-spin 1s infinite linear;
+}
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

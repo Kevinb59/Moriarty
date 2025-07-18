@@ -1,0 +1,28 @@
+{
+  "name": "Moriarty - Création de Sites Web Professionnels",
+  "short_name": "Moriarty",
+  "description": "Création de sites web professionnels sur-mesure pour particuliers, entrepreneurs et artisans. Sites vitrine, e-commerce, applications web.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#303238",
+  "theme_color": "#303238",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "images/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

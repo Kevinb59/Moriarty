@@ -62,6 +62,7 @@
 // Typewriter
 
 const words = [
+  'pro à prix malin',
   'professionnel',
   'à votre image',
   'sur-mesure',
@@ -70,7 +71,14 @@ const words = [
   'clé en main',
   'paramétrable',
   'optimisé',
-  'accessible'
+  'pro à prix malin',
+  'accessible',
+  'sécurisé',
+  'adaptatif',
+  'performant',
+  'évolutif',
+  'intuitif',
+  'ergonomique'
 ]
 
 const element = document.getElementById('typewriter-text')
@@ -147,3 +155,76 @@ function setSubject(value) {
     if (contact) contact.scrollIntoView({ behavior: 'smooth' })
   }, 100)
 }
+
+// Formulaire de contact GAS
+document.addEventListener('DOMContentLoaded', function () {
+  const contactForm = document.getElementById('contact-form')
+  const submitBtn = contactForm?.querySelector('button[type="submit"]')
+  const rgpdCheckbox = document.getElementById('rgpd')
+  // Suppression de formStatus et de toute logique liée à #form-status
+
+  // Lien vers ton script Google Apps Script (GET)
+  const GAS_URL =
+    'https://script.google.com/macros/s/AKfycby0isM4w5az_HlAaumPKGDJB9kS8x3HJ27Xx_YzxvKgPPliJ91U7YTis1PtYYhno7SufQ/exec'
+
+  function updateButtonState() {
+    if (submitBtn && rgpdCheckbox) {
+      submitBtn.disabled = !rgpdCheckbox.checked
+      submitBtn.classList.toggle('disabled', !rgpdCheckbox.checked)
+    }
+  }
+
+  function setButtonState(text, icon) {
+    if (!submitBtn) return
+    submitBtn.innerHTML = `<span class="icon solid ${icon}"></span> ${text}`
+  }
+
+  function resetButton() {
+    setTimeout(() => {
+      setButtonState('Envoyer', 'fa-paper-plane')
+      submitBtn.disabled = false
+      updateButtonState()
+    }, 2500)
+  }
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
+      e.preventDefault()
+      if (!rgpdCheckbox?.checked) {
+        setButtonState('RGPD requis', 'fa-exclamation-triangle')
+        resetButton()
+        return
+      }
+      const name = document.getElementById('name').value.trim()
+      const email = document.getElementById('email').value.trim()
+      const subject = document.getElementById('subject').value.trim()
+      const message = document.getElementById('message').value.trim()
+      if (!name || !email || !message) {
+        setButtonState('Champs requis', 'fa-exclamation-triangle')
+        resetButton()
+        return
+      }
+      setButtonState('Envoi en cours...', 'fa-spinner fa-spin')
+      submitBtn.disabled = true
+      try {
+        const params = new URLSearchParams({ name, email, subject, message })
+        const response = await fetch(`${GAS_URL}?${params.toString()}`)
+        const result = await response.json()
+        if (result.status === 'success') {
+          setButtonState('Message envoyé', 'fa-check')
+          contactForm.reset()
+          updateButtonState()
+        } else {
+          setButtonState("Erreur à l'envoi", 'fa-exclamation-triangle')
+        }
+      } catch (err) {
+        setButtonState('Erreur réseau', 'fa-exclamation-triangle')
+      }
+      resetButton()
+    })
+  }
+  if (rgpdCheckbox) {
+    rgpdCheckbox.addEventListener('change', updateButtonState)
+    updateButtonState()
+  }
+})

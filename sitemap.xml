@@ -1,9 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.moriarty-design.fr/</loc></url>
-  <url><loc>https://www.moriarty-design.fr/budget.html</loc></url>
-  <url><loc>https://www.moriarty-design.fr/cgu.html</loc></url>
-  <url><loc>https://www.moriarty-design.fr/confidentialite.html</loc></url>
-  <url><loc>https://www.moriarty-design.fr/formules.html</loc></url>
-  <url><loc>https://www.moriarty-design.fr/mentions-legales.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Page d'accueil -->
+  <url>
+    <loc>https://moriarty.fr/</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Page des formules -->
+  <url>
+    <loc>https://moriarty.fr/formules.html</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Page du budget -->
+  <url>
+    <loc>https://moriarty.fr/budget.html</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Page bureautique -->
+  <url>
+    <loc>https://moriarty.fr/bureautique.html</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Mentions légales -->
+  <url>
+    <loc>https://moriarty.fr/mentions-legales.html</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- CGU/CGV -->
+  <url>
+    <loc>https://moriarty.fr/cgu.html</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Politique de confidentialité -->
+  <url>
+    <loc>https://moriarty.fr/confidentialite.html</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>

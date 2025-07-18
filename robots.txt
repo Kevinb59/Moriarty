@@ -1,3 +1,30 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.moriarty-design.fr/sitemap.xml
+
+# Sitemap
+Sitemap: https://moriarty.fr/sitemap.xml
+
+# Temps de crawl recommandé
+Crawl-delay: 1
+
+# Pages importantes à indexer en priorité
+Allow: /index.html
+Allow: /formules.html
+Allow: /budget.html
+Allow: /bureautique.html
+
+# Ressources statiques
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /images/
+
+# Pages légales (moins prioritaires)
+Allow: /mentions-legales.html
+Allow: /cgu.html
+Allow: /confidentialite.html
+
+# Empêcher l'indexation des fichiers de développement
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /package.json
+Disallow: /README.md
