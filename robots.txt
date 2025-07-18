@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://moriarty.fr/sitemap.xml
+Sitemap: https://moriarty-design.fr/sitemap.xml
 
 # Temps de crawl recommandé
 Crawl-delay: 1
