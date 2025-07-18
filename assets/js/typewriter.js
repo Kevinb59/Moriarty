@@ -7,6 +7,7 @@ const words = [
   'clé en main',
   'paramétrable',
   'optimisé',
+  'professionnel',
   'accessible',
   'sécurisé',
   'adaptatif',
@@ -28,7 +29,7 @@ function typeWriter() {
     element.textContent = currentWord.substring(0, letterIndex++) || '\u00A0'
     if (letterIndex > currentWord.length) {
       typing = false
-      setTimeout(typeWriter, 1000)
+      setTimeout(typeWriter, 1000) // pause before deleting
       return
     }
   } else {

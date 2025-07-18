@@ -173,23 +173,16 @@ body {
   display: none;
 }
 
-#typewriter-text::after {
-  content: '|';
-  animation: blink 1s infinite;
-  margin-left: -1px;
-  font-weight: normal;
-  font-size: 1em;
-  opacity: 0.75;
+#typewriter-text {
+  display: inline-block;
+  border-right: 2px solid #cbccce;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blinkCursor 0.8s step-end infinite;
 }
 
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
+@keyframes blinkCursor {
   50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
+    border-color: transparent;
   }
 }

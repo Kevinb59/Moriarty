@@ -63,7 +63,6 @@
 
 const words = [
   'pro à prix malin',
-  'professionnel',
   'à votre image',
   'sur-mesure',
   'personnel',
@@ -71,7 +70,7 @@ const words = [
   'clé en main',
   'paramétrable',
   'optimisé',
-  'pro à prix malin',
+  'professionnel',
   'accessible',
   'sécurisé',
   'adaptatif',
