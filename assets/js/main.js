@@ -8,7 +8,9 @@
   var $window = $(window),
     $body = $('body')
 
+  //==================================================
   // Breakpoints.
+  //==================================================
   breakpoints({
     xlarge: ['1281px', '1680px'],
     large: ['981px', '1280px'],
@@ -16,14 +18,18 @@
     small: [null, '736px']
   })
 
+  //==================================================
   // Play initial animations on page load.
+  //==================================================
   $window.on('load', function () {
     window.setTimeout(function () {
       $body.removeClass('is-preload')
     }, 100)
   })
 
+  //==================================================
   // Dropdowns.
+  //==================================================
   $('#nav > ul').dropotron({
     offsetY: -22,
     mode: 'fade',
@@ -32,9 +38,13 @@
     detach: false
   })
 
+  //==================================================
   // Nav.
+  //==================================================
 
+  //==================================================
   // Title Bar.
+  //==================================================
   $(
     '<div id="titleBar">' +
       '<a href="#navPanel" class="toggle"></a>' +
@@ -44,7 +54,9 @@
       '</div>'
   ).appendTo($body)
 
+  //==================================================
   // Panel.
+  //==================================================
   $('<div id="navPanel">' + '<nav>' + $('#nav').navList() + '</nav>' + '</div>')
     .appendTo($body)
     .panel({
@@ -59,7 +71,9 @@
     })
 })(jQuery)
 
+//==================================================
 // Typewriter
+//==================================================
 
 const words = [
   'pro à prix malin',
@@ -81,34 +95,38 @@ const words = [
 ]
 
 const element = document.getElementById('typewriter-text')
-let wordIndex = 0
-let letterIndex = 0
-let typing = true
+if (element) {
+  let wordIndex = 0
+  let letterIndex = 0
+  let typing = true
 
-function typeWriter() {
-  const currentWord = words[wordIndex]
+  function typeWriter() {
+    const currentWord = words[wordIndex]
 
-  if (typing) {
-    element.textContent = currentWord.substring(0, letterIndex++) || '\u00A0'
-    if (letterIndex > currentWord.length) {
-      typing = false
-      setTimeout(typeWriter, 1000) // pause before deleting
-      return
+    if (typing) {
+      element.textContent = currentWord.substring(0, letterIndex++) || '\u00A0'
+      if (letterIndex > currentWord.length) {
+        typing = false
+        setTimeout(typeWriter, 1000)
+        return
+      }
+    } else {
+      element.textContent = currentWord.substring(0, letterIndex--) || '\u00A0'
+      if (letterIndex < 0) {
+        typing = true
+        wordIndex = (wordIndex + 1) % words.length
+      }
     }
-  } else {
-    element.textContent = currentWord.substring(0, letterIndex--) || '\u00A0'
-    if (letterIndex < 0) {
-      typing = true
-      wordIndex = (wordIndex + 1) % words.length
-    }
+
+    setTimeout(typeWriter, typing ? 80 : 40)
   }
 
-  setTimeout(typeWriter, typing ? 80 : 40)
+  typeWriter()
 }
 
-typeWriter()
-
+//==================================================
 // Socials
+//==================================================
 
 const description = document.getElementById('socials-description')
 
@@ -135,7 +153,9 @@ document.querySelectorAll('.social-box').forEach((box) => {
   })
 })
 
+//==================================================
 // Set subject
+//==================================================
 
 function setSubject(value) {
   const select = document.querySelector('select[name="subject"]')
@@ -155,75 +175,83 @@ function setSubject(value) {
   }, 100)
 }
 
-// Formulaire de contact GAS
-document.addEventListener('DOMContentLoaded', function () {
-  const contactForm = document.getElementById('contact-form')
-  const submitBtn = contactForm?.querySelector('button[type="submit"]')
-  const rgpdCheckbox = document.getElementById('rgpd')
-  // Suppression de formStatus et de toute logique liée à #form-status
+//==================================================
+// Formulaire de contact - Moriarty
+//==================================================
 
-  // Lien vers ton script Google Apps Script (GET)
+function initContactForm() {
+  const form = document.getElementById('contact-form')
+  const rgpd = document.getElementById('rgpd')
+  const submit = form?.querySelector('button[type="submit"]')
+
   const GAS_URL =
     'https://script.google.com/macros/s/AKfycby0isM4w5az_HlAaumPKGDJB9kS8x3HJ27Xx_YzxvKgPPliJ91U7YTis1PtYYhno7SufQ/exec'
 
-  function updateButtonState() {
-    if (submitBtn && rgpdCheckbox) {
-      submitBtn.disabled = !rgpdCheckbox.checked
-      submitBtn.classList.toggle('disabled', !rgpdCheckbox.checked)
-    }
+  if (!form || !submit || !rgpd) return
+
+  function setBtn(text, icon) {
+    submit.innerHTML = `<span class="icon solid ${icon}"></span> ${text}`
   }
 
-  function setButtonState(text, icon) {
-    if (!submitBtn) return
-    submitBtn.innerHTML = `<span class="icon solid ${icon}"></span> ${text}`
-  }
-
-  function resetButton() {
+  function resetBtn() {
     setTimeout(() => {
-      setButtonState('Envoyer', 'fa-paper-plane')
-      submitBtn.disabled = false
-      updateButtonState()
+      setBtn('Envoyer', 'fa-paper-plane')
+      submit.disabled = false
+      submit.classList.remove('disabled')
     }, 2500)
   }
 
-  if (contactForm) {
-    contactForm.addEventListener('submit', async function (e) {
-      e.preventDefault()
-      if (!rgpdCheckbox?.checked) {
-        setButtonState('RGPD requis', 'fa-exclamation-triangle')
-        resetButton()
-        return
-      }
-      const name = document.getElementById('name').value.trim()
-      const email = document.getElementById('email').value.trim()
-      const subject = document.getElementById('subject').value.trim()
-      const message = document.getElementById('message').value.trim()
-      if (!name || !email || !message) {
-        setButtonState('Champs requis', 'fa-exclamation-triangle')
-        resetButton()
-        return
-      }
-      setButtonState('Envoi en cours...', 'fa-spinner fa-spin')
-      submitBtn.disabled = true
-      try {
-        const params = new URLSearchParams({ name, email, subject, message })
-        const response = await fetch(`${GAS_URL}?${params.toString()}`)
-        const result = await response.json()
-        if (result.status === 'success') {
-          setButtonState('Message envoyé', 'fa-check')
-          contactForm.reset()
-          updateButtonState()
-        } else {
-          setButtonState("Erreur à l'envoi", 'fa-exclamation-triangle')
-        }
-      } catch (err) {
-        setButtonState('Erreur réseau', 'fa-exclamation-triangle')
-      }
-      resetButton()
-    })
+  function checkRGPD() {
+    const checked = rgpd.checked
+    submit.disabled = !checked
+    submit.classList.toggle('disabled', !checked)
   }
-  if (rgpdCheckbox) {
-    rgpdCheckbox.addEventListener('change', updateButtonState)
-    updateButtonState()
-  }
-})
+
+  rgpd.addEventListener('change', checkRGPD)
+  checkRGPD()
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    const name = form.querySelector('#name')?.value.trim()
+    const email = form.querySelector('#email')?.value.trim()
+    const subject = form.querySelector('#subject')?.value.trim()
+    const message = form.querySelector('#message')?.value.trim()
+
+    if (!rgpd.checked) {
+      setBtn('RGPD requis', 'fa-exclamation-triangle')
+      resetBtn()
+      return
+    }
+
+    if (!name || !email || !message) {
+      setBtn('Champs requis', 'fa-exclamation-triangle')
+      resetBtn()
+      return
+    }
+
+    setBtn('Envoi en cours...', 'fa-spinner fa-spin')
+    submit.disabled = true
+
+    try {
+      const params = new URLSearchParams({ name, email, subject, message })
+      const res = await fetch(`${GAS_URL}?${params.toString()}`)
+      const result = await res.json()
+
+      if (result.status === 'success') {
+        setBtn('Message envoyé', 'fa-check')
+        form.reset()
+        checkRGPD()
+      } else {
+        setBtn("Erreur à l'envoi", 'fa-exclamation-triangle')
+      }
+    } catch (err) {
+      setBtn('Erreur réseau', 'fa-exclamation-triangle')
+    }
+
+    resetBtn()
+  })
+}
+
+// Sécurité : on attend que tout soit chargé
+window.addEventListener('load', initContactForm)

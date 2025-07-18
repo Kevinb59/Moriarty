@@ -24,17 +24,17 @@
               <h1>
                 <a href="index.html" id="logo" class="logo-hover">Moriarty</a>
               </h1>
-              <nav id="nav">
+              <nav id="nav" role="navigation" aria-label="Menu principal">
                 <ul>
                   <li>
-                    <a href="index.html">Accueil</a>
+                    <a href="index.html" aria-current="page">Accueil</a>
                   </li>
                   <li class="current_page_item">
-                    <a href="#">Navigation</a>
+                    <a href="#" aria-haspopup="true">Navigation</a>
                     <ul>
                       <!-- Les formules -->
                       <li>
-                        <a href="#">Les formules</a>
+                        <a>Les formules</a>
                         <ul>
                           <!-- Web -->
                           <li>
@@ -85,17 +85,6 @@
                           <!-- Bureau -->
                           <li>
                             <a href="bureautique.html">Bureau</a>
-                            <ul>
-                              <li>
-                                <a href="#">Logiciels sur mesure</a>
-                              </li>
-                              <li>
-                                <a href="#">Automatisations</a>
-                              </li>
-                              <li>
-                                <a href="#">Solutions Excel / VBA</a>
-                              </li>
-                            </ul>
                           </li>
                         </ul>
                       </li>
@@ -108,8 +97,8 @@
                               href="budget.html#sites-a-cout-zero"
                               class="icon solid fa-piggy-bank"
                             >
-                              Sites à coût zéro
-                            </a>
+                              Sites à coût zéro</a
+                            >
                           </li>
                           <li>
                             <a
@@ -290,12 +279,7 @@
             <div class="col-6 col-12-medium">
               <section id="contact" aria-labelledby="contact-title">
                 <h2 id="contact-title">Contactez-moi</h2>
-                <form
-                  id="contact-form"
-                  method="POST"
-                  action="https://script.google.com/macros/s/TON_SCRIPT_ID/exec"
-                  aria-labelledby="contact-title"
-                >
+                <form id="contact-form">
                   <div class="row gtr-50">
                     <div class="col-6 col-12-small">
                       <label for="name" class="sr-only">Nom</label>

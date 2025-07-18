@@ -23,17 +23,17 @@
               <h1>
                 <a href="index.html" id="logo" class="logo-hover">Moriarty</a>
               </h1>
-              <nav id="nav">
+              <nav id="nav" role="navigation" aria-label="Menu principal">
                 <ul>
                   <li>
-                    <a href="index.html">Accueil</a>
+                    <a href="index.html" aria-current="page">Accueil</a>
                   </li>
                   <li class="current_page_item">
-                    <a href="#">Navigation</a>
+                    <a href="#" aria-haspopup="true">Navigation</a>
                     <ul>
                       <!-- Les formules -->
                       <li>
-                        <a href="#">Les formules</a>
+                        <a>Les formules</a>
                         <ul>
                           <!-- Web -->
                           <li>
@@ -84,17 +84,6 @@
                           <!-- Bureau -->
                           <li>
                             <a href="bureautique.html">Bureau</a>
-                            <ul>
-                              <li>
-                                <a href="#">Logiciels sur mesure</a>
-                              </li>
-                              <li>
-                                <a href="#">Automatisations</a>
-                              </li>
-                              <li>
-                                <a href="#">Solutions Excel / VBA</a>
-                              </li>
-                            </ul>
                           </li>
                         </ul>
                       </li>
@@ -107,8 +96,8 @@
                               href="budget.html#sites-a-cout-zero"
                               class="icon solid fa-piggy-bank"
                             >
-                              Sites à coût zéro
-                            </a>
+                              Sites à coût zéro</a
+                            >
                           </li>
                           <li>
                             <a
@@ -235,36 +224,43 @@
       </div>
 
       <div id="footer-wrapper">
-        <footer id="footer" class="container">
+        <footer id="footer" class="container" role="contentinfo">
           <div class="row">
             <!-- Formulaire de contact -->
             <div class="col-6 col-12-medium">
-              <section id="contact">
-                <h2>Contactez-moi</h2>
-                <form
-                  id="contact-form"
-                  method="POST"
-                  action="https://script.google.com/macros/s/TON_SCRIPT_ID/exec"
-                >
+              <section id="contact" aria-labelledby="contact-title">
+                <h2 id="contact-title">Contactez-moi</h2>
+                <form id="contact-form">
                   <div class="row gtr-50">
                     <div class="col-6 col-12-small">
+                      <label for="name" class="sr-only">Nom</label>
                       <input
                         type="text"
+                        id="name"
                         name="name"
                         placeholder="Votre nom"
                         required
+                        aria-required="true"
                       />
                     </div>
                     <div class="col-6 col-12-small">
+                      <label for="email" class="sr-only">Email</label>
                       <input
                         type="email"
+                        id="email"
                         name="email"
                         placeholder="Votre email"
                         required
+                        aria-required="true"
                       />
                     </div>
                     <div class="col-12">
-                      <select name="subject">
+                      <label for="subject" class="sr-only">Objet</label>
+                      <select
+                        id="subject"
+                        name="subject"
+                        aria-label="Objet de votre message"
+                      >
                         <option value="">Objet de votre message</option>
                         <option value="devis">Demande de devis</option>
                         <option value="assistance">Assistance</option>
@@ -273,27 +269,38 @@
                       </select>
                     </div>
                     <div class="col-12">
+                      <label for="message" class="sr-only">Message</label>
                       <textarea
+                        id="message"
                         name="message"
                         placeholder="Votre message"
                         rows="5"
                         required
+                        aria-required="true"
                       ></textarea>
                     </div>
                     <div class="col-12 rgpd-wrapper">
-                      <label>
-                        <input type="checkbox" name="rgpd" required checked />
+                      <label for="rgpd">
+                        <input
+                          type="checkbox"
+                          id="rgpd"
+                          name="rgpd"
+                          required
+                          checked
+                          aria-required="true"
+                        />
                         J'accepte que mes données soient utilisées pour être
                         recontacté.
                       </label>
                     </div>
                     <div class="col-12">
-                      <button type="submit" class="button primary alt">
-                        <i class="fas fa-paper-plane"></i> Envoyer
+                      <button
+                        type="submit"
+                        class="button primary alt"
+                        aria-label="Envoyer le message"
+                      >
+                        <span class="icon solid fa-paper-plane"></span> Envoyer
                       </button>
-                    </div>
-                    <div class="col-12">
-                      <p id="form-status" style="margin-top: 1em"></p>
                     </div>
                   </div>
                 </form>

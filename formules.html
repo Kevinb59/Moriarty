@@ -122,17 +122,17 @@
               <h1>
                 <a href="index.html" id="logo" class="logo-hover">Moriarty</a>
               </h1>
-              <nav id="nav">
+              <nav id="nav" role="navigation" aria-label="Menu principal">
                 <ul>
                   <li>
-                    <a href="index.html">Accueil</a>
+                    <a href="index.html" aria-current="page">Accueil</a>
                   </li>
                   <li class="current_page_item">
-                    <a href="#">Navigation</a>
+                    <a href="#" aria-haspopup="true">Navigation</a>
                     <ul>
                       <!-- Les formules -->
                       <li>
-                        <a href="#">Les formules</a>
+                        <a>Les formules</a>
                         <ul>
                           <!-- Web -->
                           <li>
@@ -183,17 +183,6 @@
                           <!-- Bureau -->
                           <li>
                             <a href="bureautique.html">Bureau</a>
-                            <ul>
-                              <li>
-                                <a href="#">Logiciels sur mesure</a>
-                              </li>
-                              <li>
-                                <a href="#">Automatisations</a>
-                              </li>
-                              <li>
-                                <a href="#">Solutions Excel / VBA</a>
-                              </li>
-                            </ul>
                           </li>
                         </ul>
                       </li>
@@ -206,8 +195,8 @@
                               href="budget.html#sites-a-cout-zero"
                               class="icon solid fa-piggy-bank"
                             >
-                              Sites à coût zéro
-                            </a>
+                              Sites à coût zéro</a
+                            >
                           </li>
                           <li>
                             <a
@@ -826,11 +815,10 @@
     <script src="assets/js/browser.min.js"></script>
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 800, once: true })
     </script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
