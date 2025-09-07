@@ -1,0 +1,17 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Moriarty;Design;;;
+FN:Moriarty Design
+ORG:Moriarty Design
+TITLE:Création de sites web
+TEL;TYPE=CELL,VOICE:+33770344332
+EMAIL;TYPE=INTERNET,PREF:contact@moriarty-design.fr
+URL;TYPE=WORK:https://www.moriarty-design.fr
+ADR;TYPE=WORK:;;Lille;;;France
+NOTE:Création de sites vitrines et e-commerce à prix malin pour particuliers et petites entreprises (restaurateurs, coiffeurs, esthéticiennes, artisans…).
+PHOTO;VALUE=URI:https://www.moriarty-design.fr/images/logo.png
+item1.URL;type=pref:https://www.moriarty-design.fr
+item1.X-ABLabel:Site web
+item2.EMAIL;type=INTERNET:contact@moriarty-design.fr
+item2.X-ABLabel:Contact
+END:VCARD
