@@ -1152,23 +1152,41 @@ function ContactMockup() {
           Logic flow: choix objet -> rendu conditionnel du champ de droite.
           ========================================================================== */}
       <div className="mt-4 grid gap-4 md:grid-cols-2">
-        <select
-          value={subject}
-          onChange={(event) => {
-            setSubject(event.target.value);
-            setDetailValue("");
-          }}
-          required
-          className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600 outline-none transition focus:border-cyan-500 focus:bg-white focus:shadow-[0_0_0_4px_rgba(6,182,212,0.12)]"
-        >
-          <option value="">Objet de votre message</option>
-          <option value="quote">Demande de devis</option>
-          <option value="refonte">Refonte de site</option>
-          <option value="print">Maquette pour impression</option>
-          <option value="support">Assistance client</option>
-          <option value="info">Demande d&apos;informations</option>
-          <option value="other">Autre</option>
-        </select>
+        {/* ==========================================================================
+            Colonne objet : wrapper unique pour la grille (label + select = une cellule).
+            Purpose: Libellé sr-only + select sans casser md:grid-cols-2.
+            Key variables: contact-subject.
+            Logic flow: une div enfant de la grille -> une colonne visuelle.
+            ========================================================================== */}
+        <div className="min-w-0">
+          {/* ==========================================================================
+              Libellé objet (sr-only)
+              Purpose: Associer un nom accessible au select pour lecteurs d'écran / Lighthouse.
+              Key variables: htmlFor contact-subject, id sur le select ci-dessous.
+              Logic flow: label sr-only -> focus annoncé comme « Objet de votre message ».
+              ========================================================================== */}
+          <label htmlFor="contact-subject" className="sr-only">
+            Objet de votre message
+          </label>
+          <select
+            id="contact-subject"
+            value={subject}
+            onChange={(event) => {
+              setSubject(event.target.value);
+              setDetailValue("");
+            }}
+            required
+            className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600 outline-none transition focus:border-cyan-500 focus:bg-white focus:shadow-[0_0_0_4px_rgba(6,182,212,0.12)]"
+          >
+            <option value="">Objet de votre message</option>
+            <option value="quote">Demande de devis</option>
+            <option value="refonte">Refonte de site</option>
+            <option value="print">Maquette pour impression</option>
+            <option value="support">Assistance client</option>
+            <option value="info">Demande d&apos;informations</option>
+            <option value="other">Autre</option>
+          </select>
+        </div>
 
         {/* ==========================================================================
             Champ contextuel de droite
@@ -1177,19 +1195,31 @@ function ContactMockup() {
             Logic flow: devis => select ; autre => textbox ; sinon aucun champ.
             ========================================================================== */}
         {isQuoteRequest && (
-          <select
-            value={detailValue}
-            onChange={(event) => setDetailValue(event.target.value)}
-            required={isQuoteRequest}
-            className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600 outline-none transition focus:border-cyan-500 focus:bg-white focus:shadow-[0_0_0_4px_rgba(6,182,212,0.12)]"
-          >
-            <option value="">Type de devis</option>
-            <option value="vitrine">Vitrine</option>
-            <option value="evolutif">Evolutif</option>
-            <option value="planning">Planning</option>
-            <option value="ecommerce">E-commerce</option>
-            <option value="webapp">Web App</option>
-          </select>
+          <div className="min-w-0">
+            {/* ==========================================================================
+                Libellé type de devis (sr-only)
+                Purpose: Nom accessible pour le second select (conditionnel devis).
+                Key variables: contact-quote-type, aligné sur les options « Type de devis ».
+                Logic flow: wrapper grille unique ; label sr-only pour technologies d'assistance.
+                ========================================================================== */}
+            <label htmlFor="contact-quote-type" className="sr-only">
+              Type de devis
+            </label>
+            <select
+              id="contact-quote-type"
+              value={detailValue}
+              onChange={(event) => setDetailValue(event.target.value)}
+              required={isQuoteRequest}
+              className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600 outline-none transition focus:border-cyan-500 focus:bg-white focus:shadow-[0_0_0_4px_rgba(6,182,212,0.12)]"
+            >
+              <option value="">Type de devis</option>
+              <option value="vitrine">Vitrine</option>
+              <option value="evolutif">Evolutif</option>
+              <option value="planning">Planning</option>
+              <option value="ecommerce">E-commerce</option>
+              <option value="webapp">Web App</option>
+            </select>
+          </div>
         )}
 
         {isOtherRequest && (
@@ -1507,7 +1537,13 @@ export default function MoriartyRefonteHomepageLight() {
             <a href="#" className="hover:text-slate-950">CGU / CGV</a>
             <a href="#" className="hover:text-slate-950">Confidentialité</a>
           </div>
-          <p className="text-sm text-slate-400">© {year} Moriarty</p>
+          {/* ==========================================================================
+              Copyright footer
+              Purpose: Texte secondaire lisible (ratio WCAG AA sur fond blanc).
+              Key variables: year, couleur text-slate-600 vs ancien slate-400 trop faible.
+              Logic flow: même contenu, contraste renforcé pour Lighthouse / a11y.
+              ========================================================================== */}
+          <p className="text-sm text-slate-600">© {year} Moriarty</p>
         </div>
       </footer>
     </main>
