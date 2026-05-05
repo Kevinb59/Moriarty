@@ -1022,7 +1022,7 @@ function TechLogosNote() {
 }
 
 function ContactMockup() {
-  const gasWebhookUrl = (import.meta.env.GAS_URL_CONTACT || "").trim();
+  const contactApiUrl = "/api/contact";
   const fallbackContactEmail = "moriarty.webdesigner@gmail.com";
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -1044,23 +1044,15 @@ function ContactMockup() {
   const genericErrorMessage = `Une erreur est survenue lors de l'envoi. Merci d'envoyer votre demande directement à ${fallbackContactEmail}.`;
 
   // ==========================================================================
-  // Contact submit handler (GAS webhook)
-  // Purpose: Envoyer le formulaire vers Google Apps Script via variable d'env.
-  // Key variables: gasWebhookUrl, payload, submitStatus, submitFeedback.
+  // Contact submit handler (Vercel API relay)
+  // Purpose: Envoyer le formulaire vers l'API locale qui relaie vers GAS côté serveur.
+  // Key variables: contactApiUrl, payload, submitStatus, submitFeedback.
   // Logic flow: validate local -> POST JSON -> afficher succès/erreur utilisateur.
   // ==========================================================================
   const handleSubmit = async (event) => {
     event.preventDefault();
     setSubmitStatus("idle");
     setSubmitFeedback("");
-
-    if (!gasWebhookUrl) {
-      setSubmitStatus("error");
-      setSubmitFeedback(
-        genericErrorMessage
-      );
-      return;
-    }
 
     if (!name.trim() || !email.trim() || !subject || !message.trim()) {
       setSubmitStatus("error");
@@ -1085,15 +1077,15 @@ function ContactMockup() {
     try {
       setIsSubmitting(true);
       // ==========================================================================
-      // GAS webhook request (strict mode)
-      // Purpose: Ne confirmer l'envoi qu'en cas de réponse exploitable et valide.
+      // API relay request (strict mode)
+      // Purpose: Ne confirmer l'envoi qu'en cas de réponse API exploitable et valide.
       // Key variables: response.ok, parsed body, payload JSON.
-      // Logic flow: POST JSON -> lecture réponse -> validation -> succès réel.
+      // Logic flow: POST JSON vers /api/contact -> lecture réponse -> succès réel.
       // ==========================================================================
-      const response = await fetch(gasWebhookUrl, {
+      const response = await fetch(contactApiUrl, {
         method: "POST",
         headers: {
-          "Content-Type": "text/plain;charset=utf-8",
+          "Content-Type": "application/json;charset=utf-8",
         },
         body: JSON.stringify(payload),
       });
