@@ -1082,31 +1082,25 @@ function ContactMockup() {
 
     try {
       setIsSubmitting(true);
-      const response = await fetch(gasWebhookUrl, {
+      // ==========================================================================
+      // GAS cross-origin delivery mode
+      // Purpose: Envoyer le POST vers Apps Script sans lecture de réponse CORS.
+      // Key variables: mode no-cors, payload JSON sérialisé.
+      // Logic flow: envoi "opaque" accepté par le navigateur -> succès optimiste.
+      // ==========================================================================
+      await fetch(gasWebhookUrl, {
         method: "POST",
+        mode: "no-cors",
         headers: {
           "Content-Type": "text/plain;charset=utf-8",
         },
         body: JSON.stringify(payload),
       });
 
-      const rawResponse = await response.text();
-      let parsed = null;
-      try {
-        parsed = rawResponse ? JSON.parse(rawResponse) : null;
-      } catch (parseError) {
-        parsed = null;
-      }
-
-      if (!response.ok || (parsed && parsed.ok === false)) {
-        throw new Error(
-          (parsed && parsed.error) ||
-            "Erreur lors de l'envoi, merci de réessayer."
-        );
-      }
-
       setSubmitStatus("success");
-      setSubmitFeedback("Message envoyé avec succès.");
+      setSubmitFeedback(
+        "Message envoyé. Si besoin, vérifiez la boîte de réception de destination."
+      );
       setName("");
       setEmail("");
       setSubject("");
