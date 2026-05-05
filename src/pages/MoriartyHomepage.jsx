@@ -1023,6 +1023,7 @@ function TechLogosNote() {
 
 function ContactMockup() {
   const gasWebhookUrl = (import.meta.env.GAS_URL_CONTACT || "").trim();
+  const fallbackContactEmail = "moriarty.webdesigner@gmail.com";
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -1040,6 +1041,7 @@ function ContactMockup() {
   // ==========================================================================
   const isQuoteRequest = subject === "quote";
   const isOtherRequest = subject === "other";
+  const genericErrorMessage = `Une erreur est survenue lors de l'envoi. Merci d'envoyer votre demande directement à ${fallbackContactEmail}.`;
 
   // ==========================================================================
   // Contact submit handler (GAS webhook)
@@ -1055,7 +1057,7 @@ function ContactMockup() {
     if (!gasWebhookUrl) {
       setSubmitStatus("error");
       setSubmitFeedback(
-        "Configuration manquante: ajoutez la variable GAS_URL_CONTACT dans Vercel."
+        genericErrorMessage
       );
       return;
     }
@@ -1083,24 +1085,33 @@ function ContactMockup() {
     try {
       setIsSubmitting(true);
       // ==========================================================================
-      // GAS cross-origin delivery mode
-      // Purpose: Envoyer le POST vers Apps Script sans lecture de réponse CORS.
-      // Key variables: mode no-cors, payload JSON sérialisé.
-      // Logic flow: envoi "opaque" accepté par le navigateur -> succès optimiste.
+      // GAS webhook request (strict mode)
+      // Purpose: Ne confirmer l'envoi qu'en cas de réponse exploitable et valide.
+      // Key variables: response.ok, parsed body, payload JSON.
+      // Logic flow: POST JSON -> lecture réponse -> validation -> succès réel.
       // ==========================================================================
-      await fetch(gasWebhookUrl, {
+      const response = await fetch(gasWebhookUrl, {
         method: "POST",
-        mode: "no-cors",
         headers: {
           "Content-Type": "text/plain;charset=utf-8",
         },
         body: JSON.stringify(payload),
       });
 
+      const rawResponse = await response.text();
+      let parsed = null;
+      try {
+        parsed = rawResponse ? JSON.parse(rawResponse) : null;
+      } catch (parseError) {
+        parsed = null;
+      }
+
+      if (!response.ok || (parsed && parsed.ok === false)) {
+        throw new Error("send_failed");
+      }
+
       setSubmitStatus("success");
-      setSubmitFeedback(
-        "Message envoyé. Si besoin, vérifiez la boîte de réception de destination."
-      );
+      setSubmitFeedback("Votre message a bien été envoyé.");
       setName("");
       setEmail("");
       setSubject("");
@@ -1108,9 +1119,7 @@ function ContactMockup() {
       setMessage("");
     } catch (error) {
       setSubmitStatus("error");
-      setSubmitFeedback(
-        error instanceof Error ? error.message : "Envoi impossible pour le moment."
-      );
+      setSubmitFeedback(genericErrorMessage);
     } finally {
       setIsSubmitting(false);
     }
