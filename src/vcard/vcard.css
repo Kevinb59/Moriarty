@@ -1,0 +1,234 @@
+/* ==========================================================================
+   1) BASE LAYOUT
+   Purpose: Forcer un rendu full-screen mobile sans scroll.
+   Key variables: 100dvh, overflow hidden, paddings adaptatifs.
+   Logic flow: page couvre l'écran -> carte s'adapte en hauteur/largeur visible.
+   ========================================================================== */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  font-family: "Montserrat", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 46% 32%, rgba(255, 255, 255, 0.55) 0%, transparent 34%),
+    radial-gradient(circle at 14% 8%, rgba(186, 230, 253, 0.3) 0%, transparent 28%),
+    radial-gradient(circle at 84% 18%, rgba(191, 219, 254, 0.2) 0%, transparent 30%),
+    linear-gradient(180deg, #f8fafc 0%, #f0f9ff 48%, #eff6ff 100%);
+}
+
+.vcard-page {
+  width: 100%;
+  height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: clamp(10px, 2.2vh, 18px);
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   2) MAIN CARD
+   Purpose: Créer un cadre principal responsive qui ne dépasse jamais l'écran.
+   Key variables: width min/max, height:100%, border radius, blur backdrop.
+   Logic flow: dimensions bornées + grid interne pour répartir le contenu.
+   ========================================================================== */
+.vcard-shell {
+  width: min(100%, 420px);
+  height: 100%;
+  /* ==========================================================================
+     Hauteur max 900px (écran large) tout en restant bornée au viewport court.
+     Purpose: même enveloppe que le widget embarqué.
+     Key variables: min(900px, 100%) pour ne pas dépasser la zone visible.
+     Logic flow: grand écran -> carte plafonnée à 900px ; petit écran -> 100%.
+     ========================================================================== */
+  max-height: min(900px, 100%);
+  border-radius: 24px;
+  border: 1px solid rgba(8, 145, 178, 0.18);
+  background:
+    radial-gradient(circle at 22% 12%, rgba(186, 230, 253, 0.35) 0%, transparent 38%),
+    radial-gradient(circle at 90% 8%, rgba(191, 219, 254, 0.25) 0%, transparent 34%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 249, 255, 0.95) 52%, rgba(255, 255, 255, 0.94) 100%);
+  box-shadow: 0 0 0 1px rgba(8, 145, 178, 0.06), 0 22px 46px rgba(14, 116, 144, 0.18);
+  backdrop-filter: blur(8px);
+  padding: clamp(16px, 3vh, 24px);
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ==========================================================================
+   2bis) DOUBLE BACKGROUND LAYERS
+   Purpose: Reprendre le fond triangulaire + particules sur la carte VCard.
+   Key variables: calques absolus et overlay pour lisibilité du contenu.
+   Logic flow: svg triangles -> canvas particules -> voile léger -> contenu.
+   ========================================================================== */
+.vcard-backgrounds {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.vcard-bg-svg,
+.vcard-bg-canvas,
+.vcard-bg-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.vcard-bg-svg {
+  opacity: 0.9;
+}
+
+.vcard-bg-canvas {
+  opacity: 0.65;
+}
+
+.vcard-bg-overlay {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.34) 48%, rgba(248, 250, 252, 0.46) 100%);
+}
+
+.vcard-content {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.8vh, 16px);
+}
+
+/* ==========================================================================
+   3) HEADER TYPOGRAPHY
+   Purpose: Reprendre l'identité visuelle du site principal.
+   Key variables: police Engagement pour "Moriarty", tracking, couleurs.
+   Logic flow: hiérarchie visuelle brand -> tagline -> typewriter dynamique.
+   ========================================================================== */
+.vcard-header {
+  text-align: center;
+}
+
+.vcard-brand {
+  margin: 0;
+  font-family: "Engagement", cursive;
+  font-size: clamp(4.2rem, 13.6vw, 6.3rem);
+  line-height: 0.88;
+  font-weight: 400;
+  color: #0f172a;
+  text-shadow: 0 2px 8px rgba(148, 163, 184, 0.22);
+}
+
+.vcard-tagline {
+  margin: clamp(12px, 1.8vh, 18px) 0 0;
+  font-weight: 800;
+  font-size: clamp(0.98rem, 3.5vw, 1.18rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0e7490;
+}
+
+.vcard-typewriter {
+  margin: clamp(4px, 0.7vh, 8px) 0 0;
+  min-height: 1.5em;
+  font-size: clamp(0.98rem, 3.5vw, 1.18rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0e7490;
+}
+
+.vcard-caret {
+  margin-left: 2px;
+  animation: vcard-blink 0.9s steps(1, end) infinite;
+}
+
+@keyframes vcard-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   4) LOGO AREA
+   Purpose: Garder le logo visible et centré tout en restant dans l'écran.
+   Key variables: max-height en pourcentage de la zone centrale.
+   Logic flow: conteneur flexible -> image contrainte par hauteur dispo.
+   ========================================================================== */
+.vcard-logo-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vcard-logo {
+  width: clamp(170px, 70vw, 318px);
+  max-width: 100%;
+  max-height: clamp(130px, 35vh, 320px);
+  object-fit: contain;
+  filter:
+    drop-shadow(0 16px 26px rgba(14, 116, 144, 0.22))
+    drop-shadow(0 6px 12px rgba(15, 23, 42, 0.16));
+}
+
+/* ==========================================================================
+   5) ACTIONS
+   Purpose: Afficher le bouton VCF et les 4 actions rapides en bas de carte.
+   Key variables: tailles adaptatives, contraste fort, hit area tactile.
+   Logic flow: CTA principal -> grille de raccourcis.
+   ========================================================================== */
+.vcard-actions {
+  display: grid;
+  justify-items: center;
+  gap: clamp(10px, 1.4vh, 14px);
+  width: 100%;
+  align-self: end;
+  margin-top: auto;
+  padding-bottom: clamp(2px, 0.5vh, 8px);
+}
+
+.vcard-save-contact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: clamp(42px, 5.6vh, 50px);
+  padding: 0 clamp(14px, 4vw, 20px);
+  border-radius: 999px;
+  border: 1px solid rgba(8, 145, 178, 0.24);
+  background: rgba(255, 255, 255, 0.92);
+  color: #0f172a;
+  font-size: clamp(0.9rem, 3.6vw, 1.08rem);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(14, 116, 144, 0.12);
+}
+
+.vcard-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(10px, 2.5vw, 14px);
+}
+
+.vcard-quick-button {
+  width: clamp(44px, 11vw, 54px);
+  height: clamp(44px, 11vw, 54px);
+  border-radius: 999px;
+  border: 1px solid rgba(8, 145, 178, 0.26);
+  background: rgba(255, 255, 255, 0.95);
+  color: #0e7490;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  font-size: clamp(1rem, 4.8vw, 1.25rem);
+  box-shadow: 0 8px 16px rgba(14, 116, 144, 0.12);
+}

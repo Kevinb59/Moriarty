@@ -1,0 +1,14 @@
+# robots.txt — Moriarty Design
+# Purpose: Indiquer aux robots d’exploration les URL autorisées et l’emplacement du sitemap.
+# Domaine canonique : https://www.moriarty-design.fr
+
+User-agent: *
+Allow: /
+
+# Page interne de réglage des fonds (non destinée au référencement)
+Disallow: /background-lab
+
+# Carte de visite numérique — pas besoin d’indexation
+Disallow: /vcard.html
+
+Sitemap: https://www.moriarty-design.fr/sitemap.xml

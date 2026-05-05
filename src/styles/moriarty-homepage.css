@@ -1,0 +1,137 @@
+/* ==========================================================================
+   1) LOCAL FONT-FACE (TESLA)
+   Purpose: Charger la police locale pour NaviSphere de manière fiable.
+   Key variables: family "Tesla by Dies", fichier /fonts/TESLA.ttf.
+   Logic flow: déclaration @font-face -> utilisation via fontFamily dans data.
+   ========================================================================== */
+@font-face {
+  font-family: "Tesla by Dies";
+  src: url("/fonts/TESLA.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   2) BRANDING HELPERS
+   Purpose: Remplacer les styles inline statiques du logo par des classes dédiées.
+   Key variables: font-family, letter-spacing, text-indent.
+   Logic flow: Appliquer des classes depuis le JSX au lieu de style={{...}}.
+   ========================================================================== */
+.moriarty-brand-wordmark {
+  font-family: "Engagement", cursive;
+}
+
+.moriarty-brand-subtitle {
+  letter-spacing: 0.52em;
+  text-indent: 0.52em;
+}
+
+/* ==========================================================================
+   3) ANIMATIONS
+   Purpose: Centraliser les animations visuelles principales.
+   Key variables: Durées et transformations de keyframes.
+   Logic flow: Déclaration keyframes -> classes animées.
+   ========================================================================== */
+@keyframes moriarty-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.moriarty-float {
+  animation: moriarty-float 7s ease-in-out infinite;
+}
+
+@keyframes moriarty-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.moriarty-marquee-track {
+  animation: moriarty-marquee 30s linear infinite;
+}
+
+@keyframes moriarty-border-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   4) HIGHLIGHT CARD BORDER
+   Purpose: Gérer l'effet de bordure lumineuse des cartes mises en avant.
+   Key variables: Couleurs cyan, blur, pseudo-elements.
+   Logic flow: Base de carte -> halo tournant (::before) -> fond interne (::after).
+   ========================================================================== */
+.moriarty-light-border {
+  isolation: isolate;
+  border-color: rgb(165 243 252) !important;
+  background: rgb(236 254 255) !important;
+  box-shadow: 0 0 0 1px rgba(8, 145, 178, 0.08), 0 22px 48px rgba(6, 182, 212, 0.14);
+}
+
+.moriarty-light-border::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 78%;
+  height: 260%;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(6, 182, 212, 0) 8%,
+    rgba(6, 182, 212, 0.18) 24%,
+    rgba(6, 182, 212, 0.55) 38%,
+    rgba(103, 232, 249, 0.95) 48%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(103, 232, 249, 0.95) 52%,
+    rgba(6, 182, 212, 0.55) 62%,
+    rgba(6, 182, 212, 0.18) 76%,
+    rgba(6, 182, 212, 0) 92%,
+    transparent 100%
+  );
+  filter: blur(18px);
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: moriarty-border-spin 4s linear infinite;
+  pointer-events: none;
+}
+
+.moriarty-light-border::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  z-index: 2;
+  border-radius: calc(2rem - 2px);
+  background: linear-gradient(135deg, #ecfeff 0%, #f0fdff 48%, #ffffff 100%);
+  box-shadow: inset 0 0 0 1px rgba(8, 145, 178, 0.08);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   5) ACCESSIBILITY REDUCED MOTION
+   Purpose: Désactiver les animations si l'utilisateur préfère moins de mouvement.
+   Key variables: media query prefers-reduced-motion.
+   Logic flow: Cibler les classes animées et couper animation.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .moriarty-float,
+  .moriarty-marquee-track,
+  .moriarty-light-border::before {
+    animation: none;
+  }
+}

@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Moriarty;;;;
+FN:Moriarty
+ORG:Moriarty Design
+TITLE:Votre site web
+TEL;TYPE=CELL:+33000000000
+EMAIL;TYPE=INTERNET:contact@moriarty-design.fr
+URL:https://www.moriarty-design.fr
+END:VCARD
