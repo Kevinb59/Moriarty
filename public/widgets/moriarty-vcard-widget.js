@@ -18,6 +18,30 @@
     return;
   }
 
+  // ==========================================================================
+  // Preconnect Google Fonts sur la page hôte (hors Shadow DOM)
+  // Purpose: accélérer @font-face Montserrat / Engagement comme sur vcard.html.
+  // Key variables: même paire fonts.googleapis + fonts.gstatic crossOrigin.
+  // Logic flow: une fois dans document.head -> les fichiers WOFF arrivent plus vite.
+  // ==========================================================================
+  function injectFontPreconnectForHostDocument() {
+    if (document.querySelector("link[data-moriarty-vcard-preconnect]")) {
+      return;
+    }
+    var fontsOrigin = document.createElement("link");
+    fontsOrigin.rel = "preconnect";
+    fontsOrigin.href = "https://fonts.googleapis.com";
+    fontsOrigin.setAttribute("data-moriarty-vcard-preconnect", "");
+    document.head.appendChild(fontsOrigin);
+    var gstaticOrigin = document.createElement("link");
+    gstaticOrigin.rel = "preconnect";
+    gstaticOrigin.href = "https://fonts.gstatic.com";
+    gstaticOrigin.crossOrigin = "anonymous";
+    gstaticOrigin.setAttribute("data-moriarty-vcard-preconnect", "");
+    document.head.appendChild(gstaticOrigin);
+  }
+  injectFontPreconnectForHostDocument();
+
   var BASE_SITE = "https://www.moriarty-design.fr";
 
   // ==========================================================================
@@ -33,8 +57,8 @@
     logoAlt: "Logo Moriarty",
     vcfDownloadName: "moriarty.vcf",
     websiteUrl: "https://www.moriarty-design.fr",
-    phoneNumber: "+33000000000",
-    email: "contact@moriarty-design.fr",
+    phoneNumber: "+33770344332",
+    email: "moriarty.webdesigner@gmail.com",
   };
 
   var rotatingWords = [
@@ -110,8 +134,8 @@
     "FN:Moriarty\r\n" +
     "ORG:Moriarty Design\r\n" +
     "TITLE:Votre site web\r\n" +
-    "TEL;TYPE=CELL:+33000000000\r\n" +
-    "EMAIL;TYPE=INTERNET:contact@moriarty-design.fr\r\n" +
+    "TEL;TYPE=CELL:+33770344332\r\n" +
+    "EMAIL;TYPE=INTERNET:moriarty.webdesigner@gmail.com\r\n" +
     "URL:https://www.moriarty-design.fr\r\n" +
     "END:VCARD\r\n";
 
@@ -291,7 +315,18 @@
   // ==========================================================================
   function buildWidgetCss() {
     return (
-      ":host { font-family: Montserrat, Arial, sans-serif; }" +
+      "@import url(\"https://fonts.googleapis.com/css2?family=Engagement&family=Montserrat:wght@500;600;700;800&display=swap\");" +
+      ":host { font-family: \"Montserrat\", Arial, sans-serif; }" +
+      ".vcard-shell," +
+      ".vcard-content," +
+      ".vcard-header," +
+      ".vcard-tagline," +
+      ".vcard-typewriter," +
+      ".vcard-save-contact," +
+      ".vcard-quick-button," +
+      ".moriarty-vcard-close {" +
+      "  font-family: \"Montserrat\", Arial, sans-serif;" +
+      "}" +
       ".moriarty-vcard-layer {" +
       "  display: none;" +
       "  position: fixed;" +
@@ -533,6 +568,7 @@
   fontLink.rel = "stylesheet";
   fontLink.href =
     "https://fonts.googleapis.com/css2?family=Engagement&family=Montserrat:wght@500;600;700;800&display=swap";
+  fontLink.setAttribute("data-moriarty-vcard-font-stylesheet", "");
 
   var styleEl = document.createElement("style");
   styleEl.textContent = buildWidgetCss();

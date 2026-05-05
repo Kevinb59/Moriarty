@@ -16,8 +16,8 @@ const vcardConfig = {
   logoAlt: "Logo Moriarty",
   vcfDownloadHref: "/vcard/moriarty.vcf",
   websiteUrl: "https://www.moriarty-design.fr",
-  phoneNumber: "+33000000000",
-  email: "contact@moriarty-design.fr",
+  phoneNumber: "+33770344332",
+  email: "moriarty.webdesigner@gmail.com",
 };
 
 // ==========================================================================
