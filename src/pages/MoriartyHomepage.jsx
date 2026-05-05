@@ -1120,10 +1120,13 @@ function ContactMockup() {
   return (
     <form
       onSubmit={handleSubmit}
+      autoComplete="on"
       className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-xl shadow-slate-200/70 transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
     >
       <div className="grid gap-4 md:grid-cols-2">
         <input
+          name="name"
+          autoComplete="name"
           value={name}
           onChange={(event) => setName(event.target.value)}
           placeholder="Votre nom"
@@ -1132,6 +1135,8 @@ function ContactMockup() {
         />
         <input
           type="email"
+          name="email"
+          autoComplete="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           placeholder="Votre email"
