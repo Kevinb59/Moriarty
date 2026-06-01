@@ -53,7 +53,7 @@ export const packs = [
   {
     name: 'Évolutif',
     tag: 'Site évolutif',
-    price: 'à partir de 49€/mois',
+    price: 'à partir de 39€/mois',
     desc: 'Un site pensé pour grandir avec votre activité, avec des contenus que vous pouvez modifier ou faire évoluer plus facilement.',
     icon: 'sliders',
     features: [
